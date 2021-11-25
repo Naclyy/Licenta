@@ -27,7 +27,6 @@ public class BackEndApplication {
         Coach secondCoach = new Coach(new AccountInformations("MonkeyKing","monkey"), new UserInformations("Robert", "Vacaru"));
         testing.add(firstCoach);
         testing.add(secondCoach);
-        System.out.println(testing);
         return testing;
     }
     public static void main(String[] args) {

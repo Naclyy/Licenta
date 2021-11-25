@@ -1,1 +1,43 @@
-<p>home works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <button type="button" class="btn btn-primary" (click)="getTrainers()">Find Trainers</button>
+    </div>
+
+    <div class="container">
+         <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trainer of trainers">
+                    <td>{{trainer.accountCredentials.username}}</td>
+                    <td>{{trainer.accountCredentials.password}}</td>
+                    <td>{{trainer.userInformations.firstName}}</td>
+                    <td>{{trainer.userInformations.lastName}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

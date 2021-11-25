@@ -1,5 +1,8 @@
 package com.users;
 
+import lombok.Data;
+
+@Data
 public class Coach {
     private AccountInformations accountCredentials;
     private UserInformations userInformations;
@@ -18,9 +21,11 @@ public class Coach {
 
     @Override
     public String toString() {
-        return "Coach{" +
-                "accountCredentials=" + accountCredentials +
-                ", userInformations=" + userInformations +
+        return "{" +
+                "username='" + accountCredentials.getUsername() + '\'' +
+                ", password='" + accountCredentials.getPassword() + '\'' +
+                ", firstname='" + userInformations.getFirstName() + '\'' +
+                ", lastname='" + userInformations.getLastName() +
                 '}';
     }
 }

@@ -16,7 +16,7 @@ export class RestapiService {
   public getTrainers(){
     let username = "naclor"
     let password = "1234"
-    const headers = new HttpHeaders({Authorization: 'Basic' + btoa(username + ":" + password)})
-    this.http.get("http://localhost:8080/getTrainers", {headers});
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(username + ":" + password)})
+    return this.http.get("http://localhost:8080/getTrainers", {headers});
   }
 }

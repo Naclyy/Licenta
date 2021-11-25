@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestapiService } from '../restapi.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   password:string;
   message:any
 
-  constructor(private service:RestapiService) { 
+  constructor(private service:RestapiService, private router:Router) { 
     this.username = ""
     this.password = ""
   }
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
   doLogin(){
     let response = this.service.login(this.username, this.password);
     response.subscribe(data=>{
-      console.log(data)
+      this.message = data;
+    this.router.navigate(["/home"])
     })
   }
 
