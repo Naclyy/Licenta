@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RestapiService } from '../restapi.service';
+import { LoginApiService } from '../services/login-api.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   password:string;
   message:any
 
-  constructor(private service:RestapiService, private router:Router) { 
+  constructor(private service:LoginApiService, private router:Router) { 
     this.username = ""
     this.password = ""
   }

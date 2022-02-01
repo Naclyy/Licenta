@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestapiService } from '../restapi.service';
+import { LoginApiService } from '../services/login-api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   trainers:any;
   username:any;
-  constructor(private service:RestapiService) { }
+  constructor(private service:LoginApiService) { }
 
   ngOnInit(): void {
   }

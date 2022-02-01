@@ -1,20 +1,9 @@
-<div class = "background-wrap">
-    <div class = "background">
-
+<div id="background">
+    <div class="flex-container-column flex-container-centered-items" id="logo-container">
+        <img src="../../assets/login/RandomLogo.png" alt="" />
+    </div>
+    <div class="flex-container-column" id="content-container">
+        <p>Change the app name here</p>
+        <h2>Login to your account</h2>
     </div>
 </div>
-
-<form id = "accespanel" action = "login" method = "post">
-    <h1 id = "header">Login Test</h1>
-    <div class = "inset">
-        <p>
-            <input type = "text" name = "username" [(ngModel)] = "username" id = "email" placeholder="username">
-        </p>
-        <p>
-            <input type = "password" name = "password" [(ngModel)] = "password" id = "password" placeholder="password">
-        </p>
-    </div>
-    <p class = "p-container">
-        <input type = "submit" name = "Login" id = "go" value = "Login" (click)="doLogin()">
-    </p>
-</form>

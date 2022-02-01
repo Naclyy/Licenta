@@ -9,7 +9,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.cors();
-        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/**").fullyAuthenticated().and().httpBasic();
+        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();
+//        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/**").fullyAuthenticated().and().httpBasic();
     }
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
