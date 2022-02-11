@@ -29,21 +29,31 @@ public class UserInformationController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping
-    public void registerNewUser(@RequestBody UserInformation userInformation){
-        userInformationService.addNewUser(userInformation);
+    @PostMapping("/add")
+    public ResponseEntity<UserInformation> registerNewUser(@RequestBody UserInformation userInformation){
+        UserInformation user = userInformationService.addNewUser(userInformation);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(path = "{userId}")
-    public void deleteUser(@PathVariable("userId") Long userId){
+    @PostMapping("/login")
+    public ResponseEntity<?> testUserCredential(@RequestBody UserInformation userInformation){
+        System.out.println(userInformation);
+        userInformationService.testUserCredentials(userInformation);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/delete/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable("userId") Long userId){
         userInformationService.deleteUser(userId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping(path = "{userId}")
-    public void updateUser(
+    @PutMapping(path = "/update/{userId}")
+    public ResponseEntity<?> updateUser(
             @PathVariable("userId") Long userId,
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName){
         userInformationService.updateUser(userId, firstName, lastName);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

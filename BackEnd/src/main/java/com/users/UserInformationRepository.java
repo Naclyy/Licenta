@@ -10,4 +10,5 @@ public interface UserInformationRepository extends JpaRepository<UserInformation
 
     // Este echivalentul la SELECT * FROM user WHERE firstName = ?
     Optional<UserInformation> findUserInformationByFirstName(String firstName);
+
 }

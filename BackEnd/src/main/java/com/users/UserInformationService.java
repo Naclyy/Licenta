@@ -21,12 +21,13 @@ public class UserInformationService {
         return userInformationRepository.findAll();
     }
 
-    public void addNewUser(UserInformation userInformation) {
+    public UserInformation addNewUser(UserInformation userInformation) {
         Optional<UserInformation> userOptional = userInformationRepository.findUserInformationByFirstName(userInformation.getFirstName());
         if (userOptional.isPresent()) {
             throw new IllegalStateException("este deja in baza de date");
         }
         userInformationRepository.save(userInformation);
+        return userInformation;
     }
 
     public void deleteUser(Long userId) {
@@ -38,7 +39,7 @@ public class UserInformationService {
     }
 
     @Transactional
-    public void updateUser(Long userId, String firstName, String lastName) {
+    public UserInformation updateUser(Long userId, String firstName, String lastName) {
         UserInformation user = userInformationRepository.findById(userId).
                 orElseThrow(() -> new IllegalStateException("userul cu idul" + userId + " nu exista"));
         if (firstName != null && firstName.length() > 0 && !Objects.equals(user.getFirstName(), firstName)) {
@@ -47,11 +48,22 @@ public class UserInformationService {
         if (lastName != null && lastName.length() > 0 && !Objects.equals(user.getLastName(), lastName)) {
             user.setLastName(lastName);
         }
+        return user;
     }
 
     public UserInformation findUserById(Long userId) {
         UserInformation user = userInformationRepository.findById(userId).
                 orElseThrow(() -> new IllegalStateException("userul cu idul" + userId + " nu exista"));
         return user;
+    }
+
+    public void testUserCredentials(UserInformation userInformation) {
+        Optional<UserInformation> userOptional = userInformationRepository.findUserInformationByFirstName(userInformation.getFirstName());
+        if (userOptional.isEmpty()) {
+            throw new IllegalStateException("Wrong Username");
+        }
+        if(!Objects.equals(userOptional.get().getLastName(), userInformation.getLastName())){
+            throw new IllegalStateException("Wrong Password");
+        }
     }
 }

@@ -1,43 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
+<div class="events_area">
     <div class="container">
-        <button type="button" class="btn btn-primary" (click)="getTrainers()">Find Trainers</button>
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="main_title">
+                    <h2 class="mb-3 text-white">Upcoming Events</h2>
+                    <p>
+                        Replenish man have thing gathering lights yielding shall you
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="single_event position-relative">
+                    <div class="event_thumb">
+                        <img src="https://via.placeholder.com/500x500/20B2AA/000000" alt="" />
+                    </div>
+                    <div class="event_details">
+                        <div class="d-flex mb-4">
+                            <div class="date"><span>15</span> Jun</div>
+                            <div class="time-location">
+                                <p><span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM</p>
+                                <p><span class="ti-location-pin mr-2"></span> Hilton Quebec</p>
+                            </div>
+                        </div>
+                        <p>
+                            One make creepeth man for so bearing their firmament won't fowl meat over seas great
+                        </p>
+                        <a href="#" class="btn btn-primary rounded-0 mt-3">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="single_event position-relative">
+                    <div class="event_thumb">
+                        <img src="https://via.placeholder.com/500x500/EE82EE/000000" alt="" />
+                    </div>
+                    <div class="event_details">
+                        <div class="d-flex mb-4">
+                            <div class="date"><span>15</span> Jun</div>
+                            <div class="time-location">
+                                <p><span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM</p>
+                                <p><span class="ti-location-pin mr-2"></span> Hilton Quebec</p>
+                            </div>
+                        </div>
+                        <p>
+                            One make creepeth man for so bearing their firmament won't fowl meat over seas great
+                        </p>
+                        <a href="#" class="btn btn-primary rounded-0 mt-3">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="text-center pt-lg-5 pt-3">
+                    <a href="#" class="event-link"> View All Event <img src="img/next.png" alt="" /> </a>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="container">
-         <table class="table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let trainer of trainers">
-                    <td>{{trainer.accountCredentials.username}}</td>
-                    <td>{{trainer.accountCredentials.password}}</td>
-                    <td>{{trainer.userInformations.firstName}}</td>
-                    <td>{{trainer.userInformations.lastName}}</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-</body>
-
-</html>
+</div>

@@ -2,19 +2,15 @@ package com.users;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table
-public class UserInformation{
+public class UserInformation implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "userInformation_sequence",
-            sequenceName = "userInformation_sequence",
-            allocationSize = 1)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "userInformation_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false) // se aplica doar la id
     private Long id;
     private String firstName;
     private String lastName;
@@ -56,5 +52,14 @@ public class UserInformation{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInformation{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
