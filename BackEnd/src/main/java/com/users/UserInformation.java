@@ -14,16 +14,19 @@ public class UserInformation implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
+    private String position;
 
-    public UserInformation(String firstName, String lastName) {
+    public UserInformation(String firstName, String lastName, String position) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.position = position;
     }
 
-    public UserInformation(Long id, String firstName, String lastName) {
+    public UserInformation(Long id, String firstName, String lastName, String position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.position = position;
     }
 
     public UserInformation() {
@@ -54,12 +57,11 @@ public class UserInformation implements Serializable {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "UserInformation{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

@@ -11,8 +11,8 @@ public class UserInformationConfig {
     @Bean
     CommandLineRunner commandLineRunner(UserInformationRepository repository){
         return args -> {
-            UserInformation andrei = new UserInformation( "Andrei", "Zaharia");
-            UserInformation robert = new UserInformation("Robert", "Vacaru");
+            UserInformation andrei = new UserInformation( "Andrei", "Zaharia", "Team Leader");
+            UserInformation robert = new UserInformation("Robert", "Vacaru", "Apps Developer");
 
             repository.saveAll(List.of(andrei, robert));
         };
