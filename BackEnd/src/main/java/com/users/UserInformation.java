@@ -1,12 +1,26 @@
 package com.users;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @Table
-public class UserInformation implements Serializable {
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+public class UserInformation implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,53 +29,56 @@ public class UserInformation implements Serializable {
     private String firstName;
     private String lastName;
     private String position;
+    private String password;
+    private String email;
+    @Enumerated(EnumType.STRING)
+    private AppUserRole appUserRole;
+    private Boolean locked;
+    private Boolean enabled;
 
-    public UserInformation(String firstName, String lastName, String position) {
+    public UserInformation(String firstName, String lastName, String position,
+                           String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
+        this.password = password;
+        this.email = email;
+        this.appUserRole = appUserRole;
     }
 
-    public UserInformation(Long id, String firstName, String lastName, String position) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.position = position;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
+        return Collections.singletonList(authority);
     }
 
-    public UserInformation() {
-
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public String getUsername() {
+        return email;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+    public boolean isAccountNonLocked() {
+        return !locked;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
+    @Override
+    public boolean isEnabled() {
+        return enabled;
     }
 }
