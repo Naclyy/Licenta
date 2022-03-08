@@ -35,12 +35,12 @@ public class UserInformationController {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> testUserCredential(@RequestBody UserInformation userInformation){
-        System.out.println(userInformation);
-        userInformationService.testUserCredentials(userInformation);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> testUserCredential(@RequestBody UserInformation userInformation){
+//        System.out.println(userInformation);
+//        userInformationService.testUserCredentials(userInformation);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     @DeleteMapping(path = "/delete/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable("userId") Long userId){

@@ -11,10 +11,10 @@ public class UserInformationConfig {
     @Bean
     CommandLineRunner commandLineRunner(UserInformationRepository repository){
         return args -> {
-            UserInformation andrei = new UserInformation( "Andrei", "Zaharia", "Team Leader");
-            UserInformation robert = new UserInformation("Robert", "Vacaru", "Apps Developer");
+            UserInformation andrei = new UserInformation( "Andrei", "Zaharia", "Team Leader", "andrei.zaharia@gmail.com","$2a$12$43DNgvHAWmxwDKIC3oZpz.IevyovvbpMcZ5b8n6WfyAarW.Lh1wDW",AppUserRole.ADMIN);
+            UserInformation robert = new UserInformation("Robert", "Vacaru", "Apps Developer","robert.vacaru@gmail.com","passwordul",AppUserRole.USER);
 
-            repository.saveAll(List.of(andrei, robert));
+           repository.saveAll(List.of(andrei, robert));
         };
     }
 }

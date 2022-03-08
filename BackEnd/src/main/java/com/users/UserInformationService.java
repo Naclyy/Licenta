@@ -1,5 +1,11 @@
 package com.users;
 
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -8,15 +14,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class UserInformationService {
-
+@AllArgsConstructor
+public class UserInformationService implements UserDetailsService {
+    private final static String USER_NOT_FOUND_MSG = "User with email %s not found";
     private final UserInformationRepository userInformationRepository;
-
-    public UserInformationService(UserInformationRepository userInformationRepository) {
-        this.userInformationRepository = userInformationRepository;
-    }
-
-
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     public List<UserInformation> getUsersInformation() {
         return userInformationRepository.findAll();
     }
@@ -51,6 +53,17 @@ public class UserInformationService {
         return user;
     }
 
+    public UserDetails findUserByEmailAndPassword(String email, String password) {
+        System.out.println(email);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        UserDetails user = userInformationRepository.findByEmail(email).
+            orElseThrow(() -> new IllegalStateException("the email doesn't exist in db"));
+        if(!encoder.matches(password, user.getPassword())){
+            throw new IllegalStateException("invalid credentials");
+        }
+        return user;
+    }
+
     public UserInformation findUserById(Long userId) {
         UserInformation user = userInformationRepository.findById(userId).
                 orElseThrow(() -> new IllegalStateException("userul cu idul" + userId + " nu exista"));
@@ -66,4 +79,31 @@ public class UserInformationService {
             throw new IllegalStateException("Wrong Password");
         }
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userInformationRepository.findByEmail(email)
+                .orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
+    }
+
+    public String signUpUser(UserInformation userInformation){
+        boolean userExists = userInformationRepository.findByEmail(userInformation.getEmail())
+                .isPresent();
+        if(userExists){
+            throw new IllegalStateException("email already taken");
+        }
+
+        String encodedPassword = bCryptPasswordEncoder
+                .encode(userInformation.getPassword());
+
+        userInformation.setPassword(encodedPassword);
+
+        userInformationRepository.save(userInformation);
+
+        //TODO: SEND Confirmation token
+
+        return "it works";
+    }
+
+
 }
