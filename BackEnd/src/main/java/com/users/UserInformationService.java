@@ -53,6 +53,17 @@ public class UserInformationService implements UserDetailsService {
         return user;
     }
 
+    public UserDetails findUserByEmailAndPassword(String email, String password) {
+        System.out.println(email);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        UserDetails user = userInformationRepository.findByEmail(email).
+            orElseThrow(() -> new IllegalStateException("the email doesn't exist in db"));
+        if(!encoder.matches(password, user.getPassword())){
+            throw new IllegalStateException("invalid credentials");
+        }
+        return user;
+    }
+
     public UserInformation findUserById(Long userId) {
         UserInformation user = userInformationRepository.findById(userId).
                 orElseThrow(() -> new IllegalStateException("userul cu idul" + userId + " nu exista"));
@@ -93,4 +104,6 @@ public class UserInformationService implements UserDetailsService {
 
         return "it works";
     }
+
+
 }

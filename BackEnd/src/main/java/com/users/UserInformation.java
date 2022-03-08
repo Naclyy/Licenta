@@ -33,8 +33,8 @@ public class UserInformation implements Serializable, UserDetails {
     private String email;
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
-    private Boolean locked;
-    private Boolean enabled;
+    private Boolean locked = false;
+    private Boolean enabled = true;
 
     public UserInformation(String firstName, String lastName, String position,
                            String email, String password, AppUserRole appUserRole) {

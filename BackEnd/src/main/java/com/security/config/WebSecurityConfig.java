@@ -20,21 +20,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserInformationService userInformationService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/**")
-                    .permitAll()
+                    .antMatchers("/**").permitAll()
                 .anyRequest()
-                .authenticated().and()
-                .formLogin();
+                .authenticated()
+                .and()
+                .httpBasic();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
+
     }
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
