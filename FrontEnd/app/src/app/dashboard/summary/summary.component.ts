@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../modules/user';
-import { UserService } from '../user.service';
+import { User } from '../../modules/user';
+import { UserService } from '../../user.service';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginService.testUsers(testForm.value).subscribe(
       (response: Login) => {
         console.log("merge");
-        this.router.navigate(['/home'])
+        this.router.navigate(["dashboard"]).then();
       },
       (error: HttpErrorResponse) => {
         alert(error.error.message)

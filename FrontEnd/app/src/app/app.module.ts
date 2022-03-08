@@ -6,15 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { SummaryComponent } from './summary/summary.component';
+import { HomeComponent } from './dashboard/home/home.component';
+import { SummaryComponent } from './dashboard/summary/summary.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
-    SummaryComponent,
   ],
   imports: [
     BrowserModule,
