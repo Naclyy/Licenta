@@ -1,24 +1,3 @@
-<header class="header">
-<!-- Just an image -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand">
-            <img src="../../assets/login/RandomLogo.png" alt="">
-        </a>
-        <button class="profile-logout">
-            <span>Logout</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.5 5.8335L12.8333 8.00016L10.5 10.1668" stroke-width="1.5" stroke-linecap="round"
-                      stroke-linejoin="round"/>
-                <path d="M12.6667 8H7.16669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path
-                    d="M10.1667 3.1665H4.50002C3.76364 3.1665 3.16669 3.76346 3.16669 4.49984V11.4998C3.16669 12.2362 3.76364 12.8332 4.50002 12.8332H10.1667"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </nav>
-</header>
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
@@ -39,7 +18,7 @@
                     <h5 class="title">View/Edit Team Members</h5>
                     <p class="text-muted mt-3 mb-0">It is a long established fact that a reader will be distracted by the when looking at its layout.</p>
                     <div class="mt-3">
-                        <a href="javascript:void(0)" class="text-custom">Read More <i class="mdi mdi-chevron-right"></i></a>
+                        <a [routerLink]="['/dashboard/team']" class="text-custom">Read More <i class="mdi mdi-chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="big-icon h1 text-custom">

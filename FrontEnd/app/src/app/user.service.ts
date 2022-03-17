@@ -9,7 +9,8 @@ import { User } from "./modules/user";
 })
 export class UserService{
     private apiServerUrl = environment.apiBaseUrl;
-
+    private status : any;
+    private errorMessage: any;
     constructor(private http: HttpClient){}
 
     public getUsers(): Observable<User[]>{
@@ -24,8 +25,16 @@ export class UserService{
         return this.http.put<User>(`${this.apiServerUrl}/user/update/${userId}`, user);
     }
 
-    public deleteUsers(userId: number): Observable<void>{
-        return this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`);
+    public deleteUsers(userId: number): void{
+        this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`).subscribe({
+            next: data => {
+                this.status = 'Delete successful';
+            },
+            error: error => {
+                this.errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        });
     }
     public testUsers(user: User): Observable<User>{
         return this.http.post<User>(`${this.apiServerUrl}/user/login`, user);

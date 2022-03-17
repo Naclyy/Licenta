@@ -5,11 +5,15 @@ import { SummaryComponent } from './summary/summary.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CommonModule } from "@angular/common";
+import { HeaderComponent } from './header/header.component';
+import { TeamMembersComponent } from './team-members/team-members.component';
 @NgModule({
   declarations: [
     HomeComponent,
     SummaryComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent,
+    TeamMembersComponent
   ],
   imports: [
     CommonModule,

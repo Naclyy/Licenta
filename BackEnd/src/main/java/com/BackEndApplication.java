@@ -13,7 +13,6 @@ import java.util.Arrays;
 //// Daca clasa pe care fac controller nu este in aceasi package trebuie adaugata o linie similara cu cea de jos
 //@ComponentScan(basePackageClasses = UserInformationController.class)
 public class BackEndApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(BackEndApplication.class, args);
     }
