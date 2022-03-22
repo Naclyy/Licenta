@@ -1,6 +1,7 @@
 package com.users;
 
 
+import com.users.tasks.TaskInformation;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
-@Table
+@Table(name = "user_information")
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -23,9 +25,9 @@ import java.util.Collections;
 public class UserInformation implements Serializable, UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false) // se aplica doar la id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", nullable = false, updatable = false) // se aplica doar la id
+    private Long userId;
     private String firstName;
     private String lastName;
     private String position;
@@ -35,7 +37,8 @@ public class UserInformation implements Serializable, UserDetails {
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = true;
-
+    @OneToMany(mappedBy = "userInformationM20")
+    private List<TaskInformation> taskInformationList;
     public UserInformation(String firstName, String lastName, String position,
                            String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;

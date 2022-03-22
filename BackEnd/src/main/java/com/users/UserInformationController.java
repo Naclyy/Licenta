@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 @RestController
@@ -49,11 +50,10 @@ public class UserInformationController {
     }
 
     @PutMapping(path = "/update/{userId}")
-    public ResponseEntity<?> updateUser(
+    public ResponseEntity<UserInformation> updateUser(
             @PathVariable("userId") Long userId,
-            @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName){
-        userInformationService.updateUser(userId, firstName, lastName);
-        return new ResponseEntity<>(HttpStatus.OK);
+            @RequestBody UserInformation userInformation){
+        UserInformation user = userInformationService.updateUser(userId, userInformation);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

@@ -30,7 +30,7 @@ export class TeamMembersComponent implements OnInit {
     };
   }
   public deleteUser(userId : any): void{
-    this.userService.deleteUsers(this.users[userId].id);
+    this.userService.deleteUsers(this.users[userId].userId);
     this.users.splice(userId, 1);
   }
 
@@ -46,17 +46,16 @@ export class TeamMembersComponent implements OnInit {
     button.click();
   }
 
-  public editUser(addForm: NgForm): void{
-    console.log(addForm.value);
-    
-    // this.userService.addUsers(addForm.value).subscribe(
-    //   (response: User) => {
-    //     console.log(response);
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     alert(error.error.message)
-    //   }
-    // );
+  public editUser(userId: number, addForm: NgForm): void{
+    this.userService.updateUsers(userId,addForm.value).subscribe(
+      (response: User) => {
+        this.users[this.editedUserId] = response;
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.error.message)
+      }
+    );
     document.getElementById('add-user-form')?.click();
   }
 }

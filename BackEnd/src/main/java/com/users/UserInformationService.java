@@ -41,12 +41,14 @@ public class UserInformationService implements UserDetailsService {
     }
 
     @Transactional
-    public UserInformation updateUser(Long userId, String firstName, String lastName) {
+    public UserInformation updateUser(Long userId, UserInformation userInformation) {
         UserInformation user = userInformationRepository.findById(userId).
                 orElseThrow(() -> new IllegalStateException("userul cu idul" + userId + " nu exista"));
+        String firstName = userInformation.getFirstName();
         if (firstName != null && firstName.length() > 0 && !Objects.equals(user.getFirstName(), firstName)) {
             user.setFirstName(firstName);
         }
+        String lastName = userInformation.getLastName();
         if (lastName != null && lastName.length() > 0 && !Objects.equals(user.getLastName(), lastName)) {
             user.setLastName(lastName);
         }

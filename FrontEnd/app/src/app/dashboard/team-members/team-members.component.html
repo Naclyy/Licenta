@@ -79,7 +79,7 @@
 				  </button>
 				  </div>
 				  <div class="modal-body">
-					  <form #addForm="ngForm" (ngSubmit)="editUser(addForm)">
+					  <form #addForm="ngForm" (ngSubmit)="editUser(users[editedUserId].userId, addForm)">
 						  <div class="form-group">
 							  <label for="name">First Name</label>
 							  <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder={{users[editedUserId].firstName}}>
