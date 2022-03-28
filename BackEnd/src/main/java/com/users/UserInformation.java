@@ -1,7 +1,8 @@
 package com.users;
 
 
-import com.users.tasks.TaskInformation;
+import com.users.tasks.howObjectives.HowInformation;
+import com.users.tasks.whatObjectives.WhatInformation;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,8 +38,13 @@ public class UserInformation implements Serializable, UserDetails {
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = true;
-    @OneToMany(mappedBy = "userInformationM20")
-    private List<TaskInformation> taskInformationList;
+
+    @OneToMany(mappedBy = "userHowTasks")
+    private List<HowInformation> howInformationList;
+
+    @OneToMany(mappedBy = "userWhatTasks")
+    private List<WhatInformation> whatInformationList;
+
     public UserInformation(String firstName, String lastName, String position,
                            String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName;

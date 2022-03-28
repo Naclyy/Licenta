@@ -1,5 +1,8 @@
 package com.users;
 
+import com.users.tasks.howObjectives.HowRepository;
+import com.users.tasks.whatObjectives.WhatRepository;
+import com.users.tasks.whatObjectives.WhatService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,16 +12,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class UserInformationService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "User with email %s not found";
     private final UserInformationRepository userInformationRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final WhatRepository whatRepository;
+    private final HowRepository howRepository;
     public List<UserInformation> getUsersInformation() {
         return userInformationRepository.findAll();
     }
@@ -37,7 +44,10 @@ public class UserInformationService implements UserDetailsService {
         if (!exists) {
             throw new IllegalStateException("userul cu id-ul" + userId + " nu exista");
         }
+        whatRepository.removeWhatInformationsByUserId(userId);
+        howRepository.removeHowInformationsByUserId(userId);
         userInformationRepository.deleteById(userId);
+
     }
 
     @Transactional

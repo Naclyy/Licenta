@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule} from '@angular/router';
 import { DashboardComponent } from "./dashboard.component";
 import { HomeComponent } from "./home/home.component";
+import { IndividualRecordsComponent } from "./individual-records/individual-records.component";
 import { SummaryComponent } from "./summary/summary.component";
 import { TeamMembersComponent } from "./team-members/team-members.component";
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
             {
                 path:'team',
                 component: TeamMembersComponent
+            },
+            {
+                path:'individual-records',
+                loadChildren: () => import("../dashboard/individual-records/individual-records.module").then(module => module.IndividualRecordsModule)
             }
 
         ]

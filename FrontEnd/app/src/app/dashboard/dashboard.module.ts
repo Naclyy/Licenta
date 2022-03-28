@@ -7,13 +7,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CommonModule } from "@angular/common";
 import { HeaderComponent } from './header/header.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
+import { IndividualRecordsComponent } from './individual-records/individual-records.component';
 @NgModule({
   declarations: [
     HomeComponent,
     SummaryComponent,
     DashboardComponent,
     HeaderComponent,
-    TeamMembersComponent
+    TeamMembersComponent,
+    IndividualRecordsComponent
   ],
   imports: [
     CommonModule,
