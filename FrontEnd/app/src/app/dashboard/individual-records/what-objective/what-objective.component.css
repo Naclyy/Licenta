@@ -222,7 +222,7 @@ body{margin-top:20px;}
 }
 
 /* Set What Objective Button */
-.what-page {
+.how-page {
     margin: 15px;
     display: inline;
     justify-content: center;
@@ -235,7 +235,7 @@ body{margin-top:20px;}
     color: #0d4fc9;
     transition: .2s;
 }
-.what-page span {
+.how-page span {
     margin-top: 8.5px;
     text-align: center;
     font-weight: 500px;
@@ -244,18 +244,18 @@ body{margin-top:20px;}
     padding-left: 5px;
 }
 
-.what-page svg {
+.how-page svg {
     transition: .2s;
 }
 
-.what-page:hover {
+.how-page:hover {
     background-color: #0d4fc9;
     color: white;
     cursor: pointer;
 
 
 }
-.what-page:hover svg{
+.how-page:hover svg{
     stroke: white;
 }
 

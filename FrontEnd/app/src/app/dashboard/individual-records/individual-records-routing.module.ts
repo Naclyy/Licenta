@@ -3,6 +3,7 @@ import { Routes, RouterModule} from '@angular/router';
 import { HowObjectiveComponent } from "./how-objective/how-objective.component";
 import { IndividualRecordsComponent } from "./individual-records.component";
 import { SelectUserComponent } from "./select-user/select-user.component";
+import { WhatObjectiveComponent } from "./what-objective/what-objective.component";
 const routes: Routes = [
     {
         path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [
             {
                 path:'how-objective/:id',
                 component: HowObjectiveComponent
+            },
+            {
+                path:'what-objective/:id',
+                component: WhatObjectiveComponent
             }
         ]
     }

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HowObjectiveService } from 'src/app/services/howObjective.service';
+import { WhatObjectiveService } from 'src/app/services/whatObjective.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Task } from 'src/app/modules/task';
-import { ThrowStmt } from '@angular/compiler';
 @Component({
-  selector: 'app-how-objective',
-  templateUrl: './how-objective.component.html',
-  styleUrls: ['./how-objective.component.css']
+  selector: 'app-what-objective',
+  templateUrl: './what-objective.component.html',
+  styleUrls: ['./what-objective.component.css']
 })
-export class HowObjectiveComponent implements OnInit {
+export class WhatObjectiveComponent implements OnInit {
   public id : any
   public tasks: Task[] = []
-  constructor(private howObjectiveService: HowObjectiveService, private router: Router, private _Activatedroute: ActivatedRoute) { 
+  constructor(private howObjectiveService: WhatObjectiveService, private router: Router, private _Activatedroute: ActivatedRoute) { 
     
   }
   ngOnInit(): void {
@@ -34,7 +33,7 @@ export class HowObjectiveComponent implements OnInit {
   back(): void{
     this.router.navigate(["dashboard/individual-records"]);
   }
-  whatObjective(): void{
-    this.router.navigate(["dashboard/individual-records/what-objective", this.id]);
+  howObjective(): void{
+    this.router.navigate(["dashboard/individual-records/how-objective", this.id]);
   }
 }

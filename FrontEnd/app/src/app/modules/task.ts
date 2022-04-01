@@ -1,8 +1,7 @@
 export interface Task{
-    taskId: number;
+    taskId: number,
     userId: number,
-    whatObjectives: string | null;
-    howObjectives: string | null;
-    dateAdded: string,
-    deadLine: string
+    objectives: string | null,
+    dateAdded: string | null,
+    deadline: string | null
 }

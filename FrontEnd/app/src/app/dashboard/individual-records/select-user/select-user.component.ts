@@ -46,6 +46,13 @@ export class SelectUserComponent implements OnInit {
     else
       this.router.navigate(["dashboard/individual-records/how-objective", user_id]);
   }
+  whatObjective(): void{
+    const user_id = this.isUserChoosen()
+    if(user_id == -1)
+      console.log("not selected");
+    else
+      this.router.navigate(["dashboard/individual-records/what-objective", user_id]);
+  }
 
   back_home(): void{
     this.router.navigate(["dashboard/home"]);
