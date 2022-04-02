@@ -1,0 +1,224 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" id="main-container">
+    <button class = "back-button" (click)="back()">
+        <svg width="27" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+        <span>
+            Back
+        </span>
+    </button>
+	<button (click)="whatObjective()" class = "what-page">
+		<span>
+			Set What Objective
+		</span>
+	</button>
+	<button (click)="howObjective()" class = "how-page">
+		<span>
+			Set How Objective
+		</span>
+		<svg xmlns="http://www.w3.org/2000/svg"  width="35" height="30"  viewBox="0 0 24 24"><path fill="currentColor" d="M13.293 7.293a.999.999 0 0 0 0 1.414L15.586 11H8a1 1 0 0 0 0 2h7.586l-2.293 2.293a.999.999 0 1 0 1.414 1.414L19.414 12l-4.707-4.707a.999.999 0 0 0-1.414 0z"/></svg>
+
+	</button>
+
+    <div class="card">
+        <form>
+          <!-- Card header -->
+          <div class="card-header py-4 px-5 bg-light border-0">
+            <h4 class="mb-0 fw-bold">Settings</h4>
+          </div>
+    
+          <!-- Card body -->
+          <div class="card-body px-5">
+            <!-- Account section -->
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Account</h5>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+              </div>
+    
+              <div class="col-md-8">
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label"
+                         >Full name</label
+                    >
+                  <input type="text" class="form-control" id="exampleInput1" style="max-width: 500px;"/>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput2" class="form-label"
+                         >Email address</label
+                    >
+                  <input type="email" class="form-control" id="exampleInput2" style="max-width: 500px;"/>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput3" class="form-label"
+                         >Phone number</label
+                    >
+                  <input type="tel" class="form-control" id="exampleInput3" style="max-width: 300px;"/>
+                </div>
+              </div>
+            </div>
+    
+            <hr class="my-5" />
+    
+            <!-- Billing section -->
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Billing</h5>
+                <p class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fugiat cum nihil suscipit!</p>
+              </div>
+    
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInput4" class="form-label">Plan</label>
+                      <input
+                             type="text"
+                             class="form-control"
+                             id="exampleInput4"
+                             />
+                    </div>
+                  </div>
+    
+                  <div class="col-md-6">
+                    <label for="exampleInput5" class="form-label"
+                           >Billing</label
+                      >
+                    <select
+                            id="exampleInput5"
+                            class="form-select mb-3"
+                            aria-label="Default select example"
+                            >
+                      <option selected value="1">Monthly</option>
+                      <option value="2">Annually</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <hr class="my-5" />
+    
+            <!-- Business address section -->
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Business address</h5>
+                <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis amet magnam voluptas voluptatum.</p>
+              </div>
+    
+              <div class="col-md-8">
+                <div class="mb-3">
+                  <label for="exampleInput6" class="form-label"
+                         >Street address</label
+                    >
+                  <input type="text" class="form-control" id="exampleInput6" />
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInput7" class="form-label">City</label>
+                      <input
+                             type="text"
+                             class="form-control"
+                             id="exampleInput7"
+                             />
+                    </div>
+                  </div>
+    
+                  <div class="col-md-6">
+                    <label for="exampleInput8" class="form-label">State</label>
+                    <select
+                            id="exampleInput8"
+                            class="form-select mb-3"
+                            aria-label="Default select example"
+                            >
+                      <option selected value="1">California</option>
+                      <option value="2">Texas</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInput9" class="form-label"
+                             >Postal code</label
+                        >
+                      <input
+                             type="text"
+                             class="form-control"
+                             id="exampleInput9"
+                             />
+                    </div>
+                  </div>
+    
+                  <div class="col-md-6">
+                    <label for="exampleInput10" class="form-label"
+                           >Country</label
+                      >
+                    <select
+                            id="exampleInput10"
+                            class="form-select mb-3"
+                            aria-label="Default select example"
+                            >
+                      <option selected value="1">USA</option>
+                      <option value="2">Canada</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <hr class="my-5" />
+    
+            <!-- Password section -->
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Change password</h5>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, magnam.</p>
+              </div>
+    
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInput11" class="form-label"
+                             >Old password</label
+                        >
+                      <input
+                             type="password"
+                             class="form-control"
+                             id="exampleInput11"
+                             />
+                    </div>
+                  </div>
+    
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="exampleInput12" class="form-label"
+                             >New password</label
+                        >
+                      <input
+                             type="password"
+                             class="form-control"
+                             id="exampleInput12"
+                             />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Card footer -->
+          <div class="card-footer text-end py-4 px-5 bg-light border-0">
+            <button class="btn btn-link btn-rounded" data-ripple-color="primary">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-rounded">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+</div>

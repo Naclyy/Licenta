@@ -4,6 +4,7 @@ import { HowObjectiveComponent } from "./how-objective/how-objective.component";
 import { IndividualRecordsComponent } from "./individual-records.component";
 import { SelectUserComponent } from "./select-user/select-user.component";
 import { WhatObjectiveComponent } from "./what-objective/what-objective.component";
+import { EvaluateComponent } from "./evaluate/evaluate.component";
 const routes: Routes = [
     {
         path: '',
@@ -25,6 +26,10 @@ const routes: Routes = [
             {
                 path:'what-objective/:id',
                 component: WhatObjectiveComponent
+            },
+            {
+                path:'evaluate/:id',
+                component: EvaluateComponent
             }
         ]
     }
