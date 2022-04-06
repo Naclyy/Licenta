@@ -24,20 +24,18 @@ public class HowInformation implements Serializable {
     @Column(name = "user_id")
     private Long userId;
     private String objectives;
-    private String dateAdded;
-    private String deadline;
+    private Long whatTaskId;
+    private int estimatedTime;
     @JsonIgnore
     @ManyToOne(targetEntity = com.users.UserInformation.class, optional = false)
     @JoinColumn(name = "user_id", updatable = false, insertable = false)
     private UserInformation userHowTasks;
 
 
-    public HowInformation(Long userId, String objectives, String dateAdded, String deadline) {
+    public HowInformation(Long userId, String objectives, Long whatTaskId, int estimatedTime) {
         this.userId = userId;
         this.objectives = objectives;
-        this.dateAdded = dateAdded;
-        this.deadline = deadline;
+        this.whatTaskId = whatTaskId;
+        this.estimatedTime = estimatedTime;
     }
-
-
 }
