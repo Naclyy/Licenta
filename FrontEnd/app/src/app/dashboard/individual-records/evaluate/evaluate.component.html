@@ -25,191 +25,95 @@
         <form>
           <!-- Card header -->
           <div class="card-header py-4 px-5 bg-light border-0">
-            <h4 class="mb-0 fw-bold">Settings</h4>
+            <h4 class="mb-0 fw-bold">Evaluate nume selectat</h4>
           </div>
     
           <!-- Card body -->
           <div class="card-body px-5">
-            <!-- Account section -->
+            <!-- Key Strength section -->
             <div class="row gx-xl-5">
               <div class="col-md-4">
-                <h5>Account</h5>
+                <h5>Key Strength Description</h5>
                 <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
               </div>
     
               <div class="col-md-8">
                 <div class="mb-3">
-                  <label for="exampleInput1" class="form-label"
-                         >Full name</label
-                    >
-                  <input type="text" class="form-control" id="exampleInput1" style="max-width: 500px;"/>
+                  <label for="exampleInput1" class="form-label">Key Strength 1</label>
+                  <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                    <option value = "0">Select Key Strength</option>
+                    <option>{{strengths[1] | json}}</option>
+                  </select>
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInput2" class="form-label"
-                         >Email address</label
-                    >
-                  <input type="email" class="form-control" id="exampleInput2" style="max-width: 500px;"/>
+                  <label for="exampleInput2" class="form-label">Key Strength 2</label>
+                  <select class="form-control" id="exampleInput2" style="max-width: 500px;"></select>
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInput3" class="form-label"
-                         >Phone number</label
-                    >
-                  <input type="tel" class="form-control" id="exampleInput3" style="max-width: 300px;"/>
+                  <label for="exampleInput3" class="form-label">Key Strength 3</label>
+                  <select class="form-control" id="exampleInput3" style="max-width: 500px;"></select>
+                </div>
+                <div class="mb-3">
+                  <label for="keyComment" class="form-label">Add Comment</label>
+                  <input type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4"/>
                 </div>
               </div>
             </div>
     
             <hr class="my-5" />
     
-            <!-- Billing section -->
+            <!-- Key Strength section -->
             <div class="row gx-xl-5">
               <div class="col-md-4">
-                <h5>Billing</h5>
-                <p class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fugiat cum nihil suscipit!</p>
-              </div>
-    
-              <div class="col-md-8">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="exampleInput4" class="form-label">Plan</label>
-                      <input
-                             type="text"
-                             class="form-control"
-                             id="exampleInput4"
-                             />
-                    </div>
-                  </div>
-    
-                  <div class="col-md-6">
-                    <label for="exampleInput5" class="form-label"
-                           >Billing</label
-                      >
-                    <select
-                            id="exampleInput5"
-                            class="form-select mb-3"
-                            aria-label="Default select example"
-                            >
-                      <option selected value="1">Monthly</option>
-                      <option value="2">Annually</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <hr class="my-5" />
-    
-            <!-- Business address section -->
-            <div class="row gx-xl-5">
-              <div class="col-md-4">
-                <h5>Business address</h5>
-                <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis amet magnam voluptas voluptatum.</p>
+                <h5>Skill Development Opportunity</h5>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
               </div>
     
               <div class="col-md-8">
                 <div class="mb-3">
-                  <label for="exampleInput6" class="form-label"
-                         >Street address</label
-                    >
-                  <input type="text" class="form-control" id="exampleInput6" />
+                  <label for="exampleInput1" class="form-label">Skill Development Opportunity</label>
+                  <select class="form-control" id="exampleInput1" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
                 </div>
-    
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="exampleInput7" class="form-label">City</label>
-                      <input
-                             type="text"
-                             class="form-control"
-                             id="exampleInput7"
-                             />
-                    </div>
-                  </div>
-    
-                  <div class="col-md-6">
-                    <label for="exampleInput8" class="form-label">State</label>
-                    <select
-                            id="exampleInput8"
-                            class="form-select mb-3"
-                            aria-label="Default select example"
-                            >
-                      <option selected value="1">California</option>
-                      <option value="2">Texas</option>
-                    </select>
-                  </div>
+              
+                <div class="mb-3">
+                  <label for="keyComment" class="form-label">Add Comment</label>
+                  <input type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4"/>
                 </div>
-    
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="exampleInput9" class="form-label"
-                             >Postal code</label
-                        >
-                      <input
-                             type="text"
-                             class="form-control"
-                             id="exampleInput9"
-                             />
-                    </div>
-                  </div>
-    
-                  <div class="col-md-6">
-                    <label for="exampleInput10" class="form-label"
-                           >Country</label
-                      >
-                    <select
-                            id="exampleInput10"
-                            class="form-select mb-3"
-                            aria-label="Default select example"
-                            >
-                      <option selected value="1">USA</option>
-                      <option value="2">Canada</option>
-                    </select>
-                  </div>
+
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label">Next Skill Development Priority 1</label>
+                  <select class="form-control" id="exampleInput1" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
                 </div>
+                <div class="mb-3">
+                  <label for="exampleInput2" class="form-label">Next Skill Development Priority 2</label>
+                  <select class="form-control" id="exampleInput2" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput3" class="form-label">Next Skill Development Priority 3</label>
+                  <select class="form-control" id="exampleInput3" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="keyComment" class="form-label">Add Comment</label>
+                  <input type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4"/>
+                </div>
+
               </div>
             </div>
     
-            <hr class="my-5" />
-    
-            <!-- Password section -->
-            <div class="row gx-xl-5">
-              <div class="col-md-4">
-                <h5>Change password</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, magnam.</p>
-              </div>
-    
-              <div class="col-md-8">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="exampleInput11" class="form-label"
-                             >Old password</label
-                        >
-                      <input
-                             type="password"
-                             class="form-control"
-                             id="exampleInput11"
-                             />
-                    </div>
-                  </div>
-    
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="exampleInput12" class="form-label"
-                             >New password</label
-                        >
-                      <input
-                             type="password"
-                             class="form-control"
-                             id="exampleInput12"
-                             />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
           </div>
     
           <!-- Card footer -->
