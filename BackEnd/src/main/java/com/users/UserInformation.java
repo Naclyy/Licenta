@@ -1,6 +1,8 @@
 package com.users;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.users.tasks.evaluate.EvaluateInformation;
 import com.users.tasks.howObjectives.HowInformation;
 import com.users.tasks.whatObjectives.WhatInformation;
 import lombok.EqualsAndHashCode;
@@ -44,6 +46,9 @@ public class UserInformation implements Serializable, UserDetails {
 
     @OneToMany(mappedBy = "userWhatTasks")
     private List<WhatInformation> whatInformationList;
+
+    @OneToOne(mappedBy = "userEvaluate", cascade = CascadeType.ALL)
+    private EvaluateInformation evaluateInformation;
 
     public UserInformation(String firstName, String lastName, String position,
                            String email, String password, AppUserRole appUserRole) {

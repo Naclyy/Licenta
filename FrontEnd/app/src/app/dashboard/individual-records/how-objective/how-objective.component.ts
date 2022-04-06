@@ -37,4 +37,7 @@ export class HowObjectiveComponent implements OnInit {
   whatObjective(): void{
     this.router.navigate(["dashboard/individual-records/what-objective", this.id]);
   }
+  evaluate(): void{
+    this.router.navigate(["dashboard/individual-records/evaluate", this.id]);
+  }
 }

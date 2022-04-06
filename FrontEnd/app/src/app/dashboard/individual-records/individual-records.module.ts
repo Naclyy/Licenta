@@ -5,13 +5,15 @@ import { IndividualRecordsRoutingModule } from './individual-records-routing.mod
 import { SelectUserComponent } from './select-user/select-user.component';
 import { HowObjectiveComponent } from './how-objective/how-objective.component';
 import { WhatObjectiveComponent } from './what-objective/what-objective.component';
+import { EvaluateComponent } from './evaluate/evaluate.component';
 
 @NgModule({
   declarations: [
   
     SelectUserComponent,
        HowObjectiveComponent,
-       WhatObjectiveComponent
+       WhatObjectiveComponent,
+       EvaluateComponent
   ],
   imports: [
     CommonModule,
