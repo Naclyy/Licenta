@@ -1,9 +1,8 @@
 package com.users;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.users.tasks.evaluate.EvaluateInformation;
-import com.users.tasks.howObjectives.HowInformation;
+import com.users.tasks.whatObjectives.howObjectives.HowInformation;
 import com.users.tasks.whatObjectives.WhatInformation;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

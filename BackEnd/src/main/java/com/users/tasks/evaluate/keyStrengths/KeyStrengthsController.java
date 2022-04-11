@@ -1,7 +1,6 @@
 package com.users.tasks.evaluate.keyStrengths;
 
 
-import com.users.tasks.howObjectives.HowInformation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

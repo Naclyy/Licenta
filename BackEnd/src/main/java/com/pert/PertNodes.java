@@ -5,6 +5,7 @@ import java.util.List;
 
 public class PertNodes {
     List<PertNodes> predecessors = new LinkedList<>();
+    String name;
     int estimatedTime;
     int earlyStart;
     int earlyFinish;
@@ -12,6 +13,38 @@ public class PertNodes {
     int lateFinish;
     boolean isLast = false;
     int slack = 0;
+
+    public int getEarlyStart() {
+        return earlyStart;
+    }
+
+    public void setEarlyStart(int earlyStart) {
+        this.earlyStart = earlyStart;
+    }
+
+    public int getEarlyFinish() {
+        return earlyFinish;
+    }
+
+    public void setEarlyFinish(int earlyFinish) {
+        this.earlyFinish = earlyFinish;
+    }
+
+    public int getLateStart() {
+        return lateStart;
+    }
+
+    public void setLateStart(int lateStart) {
+        this.lateStart = lateStart;
+    }
+
+    public int getLateFinish() {
+        return lateFinish;
+    }
+
+    public void setLateFinish(int lateFinish) {
+        this.lateFinish = lateFinish;
+    }
 
     public PertNodes(int estimatedTime, int earlyStart, int earlyFinish, int lateStart, int lateFinish) {
         this.estimatedTime = estimatedTime;
@@ -45,14 +78,13 @@ public class PertNodes {
             }
             this.earlyFinish = this.earlyStart + this.estimatedTime;
         }
-        if(this.isLast){
-            this.lateFinish = this.earlyStart;
-            this.lateStart = this.lateFinish - this.estimatedTime;
-        }
+        this.lateFinish = this.earlyFinish;
+        this.lateStart = this.lateFinish - this.estimatedTime;
     }
+
     public void calculateLateStartFinish(){
         for(PertNodes node : predecessors) {
-            if(this.lateStart < node.lateFinish || node.lateFinish == -1){
+            if(this.lateStart < node.lateFinish || this.lateFinish == this.earlyFinish){
                 node.lateFinish = this.lateStart;
                 node.lateStart = this.lateStart - node.estimatedTime;
                 node.slack = node.lateStart - node.earlyStart;
@@ -60,6 +92,17 @@ public class PertNodes {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void getPredecessor(){
+        System.out.println(predecessors);
+    }
     @Override
     public String toString() {
         return "PertNodes{" +

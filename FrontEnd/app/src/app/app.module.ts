@@ -10,6 +10,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { SummaryComponent } from './dashboard/summary/summary.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

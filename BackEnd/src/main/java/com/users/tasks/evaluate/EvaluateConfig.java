@@ -1,6 +1,5 @@
 package com.users.tasks.evaluate;
 
-import com.users.tasks.howObjectives.HowInformation;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

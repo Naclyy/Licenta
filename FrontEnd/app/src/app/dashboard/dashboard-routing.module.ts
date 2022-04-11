@@ -5,6 +5,7 @@ import { HomeComponent } from "./home/home.component";
 import { IndividualRecordsComponent } from "./individual-records/individual-records.component";
 import { SummaryComponent } from "./summary/summary.component";
 import { TeamMembersComponent } from "./team-members/team-members.component";
+import { GraphComponent } from "./graph/graph.component";
 const routes: Routes = [
     {
         path: '',
@@ -26,6 +27,10 @@ const routes: Routes = [
             {
                 path:'team',
                 component: TeamMembersComponent
+            },
+            {
+                path:'graph',
+                component: GraphComponent
             },
             {
                 path:'individual-records',

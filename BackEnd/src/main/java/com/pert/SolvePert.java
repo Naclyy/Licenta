@@ -27,9 +27,6 @@ public class SolvePert {
         F.addPredecessors(C);
         F.addPredecessors(E);
         G.addPredecessors(E);
-        finish.addPredecessors(F);
-        finish.addPredecessors(G);
-        finish.setLast();
 
         nodes.add(start);
         nodes.add(A);
@@ -39,7 +36,6 @@ public class SolvePert {
         nodes.add(E);
         nodes.add(F);
         nodes.add(G);
-        nodes.add(finish);
 
         for(PertNodes node : nodes){
             node.calculateEarlyStartFinish();

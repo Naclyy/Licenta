@@ -8,6 +8,8 @@ import { CommonModule } from "@angular/common";
 import { HeaderComponent } from './header/header.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
 import { IndividualRecordsComponent } from './individual-records/individual-records.component';
+import { GraphComponent } from './graph/graph.component';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -15,12 +17,14 @@ import { IndividualRecordsComponent } from './individual-records/individual-reco
     DashboardComponent,
     HeaderComponent,
     TeamMembersComponent,
-    IndividualRecordsComponent
+    IndividualRecordsComponent,
+    GraphComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    NgChartsModule
   ],
 })
 export class DashboardModule { }

@@ -1,7 +1,6 @@
 package com.users.tasks.evaluate.keyStrengths;
 
 
-import com.users.tasks.howObjectives.HowInformation;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.users.tasks.howObjectives;
+package com.users.tasks.whatObjectives.howObjectives;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +20,11 @@ public class HowController {
     @GetMapping("/findAll/{id}")
     public ResponseEntity<List<HowInformation>> getHowObjectivesByUserId(@PathVariable("id") Long id){
         return new ResponseEntity<>(howService.getHowObjectivesByUserId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/test/{id}")
+    public ResponseEntity<List<Graph>> estimateTaskTime(@PathVariable("id") Long id){
+        return new ResponseEntity<>(howService.findAllByWhatId(id),HttpStatus.OK);
     }
 
     @PostMapping("/add")
