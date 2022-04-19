@@ -1,7 +1,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" id="main-container">
     <button class = "back-button" (click)="back()">
-        <svg width="27" height="30" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="24" height="14" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
         </svg>
         <span>
@@ -17,8 +17,12 @@
 		<span>
 			Set What Objective
 		</span>
-		<svg xmlns="http://www.w3.org/2000/svg"  width="35" height="30"  viewBox="0 0 24 24"><path fill="currentColor" d="M13.293 7.293a.999.999 0 0 0 0 1.414L15.586 11H8a1 1 0 0 0 0 2h7.586l-2.293 2.293a.999.999 0 1 0 1.414 1.414L19.414 12l-4.707-4.707a.999.999 0 0 0-1.414 0z"/></svg>
-
+		<svg xmlns="http://www.w3.org/2000/svg"  width="28" height="19"  viewBox="0 0 20 25"><path fill="currentColor" d="M13.293 7.293a.999.999 0 0 0 0 1.414L15.586 11H8a1 1 0 0 0 0 2h7.586l-2.293 2.293a.999.999 0 1 0 1.414 1.414L19.414 12l-4.707-4.707a.999.999 0 0 0-1.414 0z"/></svg>
+	</button>
+	<button (click)="onOpenModal()" class = "addButton">
+		<span>
+			Add
+		</span>
 	</button>
 <div class="row">
 	<div class="col-lg-12">
@@ -28,8 +32,7 @@
 					<thead>
 						<tr style="text-align: center;">
 							<th><span>Task</span></th>
-							<th><span >Date Added</span></th>
-							<th><span>Deadline</span></th>
+							<th><span>Estimated Days</span></th>
 							<th>&nbsp;</th>
 						</tr>
 					</thead>
@@ -39,20 +42,17 @@
 								<p class="user-link">{{task?.objectives}}</p>
 							</td>
 							<td>
-								<p class="date">{{task?.dateAdded}}</p>
-							</td>
-							<td>
-								<p class="deadline">{{task?.deadline}}</p>
+								<p class="deadline">{{task?.whatId}}</p>
 							</td>
 							<td class = ""style="width: 20%;">
 								
-								<a  class="table-link">
+								<a  href="javascript:void(0)" class="table-link">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 									</span>
 								</a>
-								<a  (click)="deleteTask(i)" class="table-link danger" >
+								<a  href="javascript:void(0)" (click)="deleteTask(i)" class="table-link danger" >
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -74,41 +74,7 @@
 			</ul> -->
 			</div>
 		</div>
-		<!-- Modal -->
-		<!-- <div *ngIf="users[editedUserId]" class="modal" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				  <div class="modal-header">
-				  <h5 class="modal-title" id="addUserModalLabel">What you want to change?</h5>
-				  <button type="button" class="close" (click)="addForm.resetForm()" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				  </button>
-				  </div>
-				  <div class="modal-body">
-					  <form #addForm="ngForm" (ngSubmit)="editUser(users[editedUserId].userId, addForm)">
-						  <div class="form-group">
-							  <label for="name">First Name</label>
-							  <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder={{users[editedUserId].firstName}}>
-						  </div>
-						  <div class="form-group">
-							  <label for="name">Last Name</label>
-							  <input type="text" ngModel name="lastName" class="form-control" id="lastName" placeholder={{users[editedUserId].lastName}}>
-						  </div>
-						  <div class="form-group">
-							<label for="name">Email</label>
-							<input type="text" ngModel name="email" class="form-control" id="email" placeholder={{users[editedUserId].email}}>
-						  </div>
-						  <div class="form-group">
-							<label for="name">Position</label>
-							<input type="text" ngModel name="position" class="form-control" id="position" placeholder={{users[editedUserId].position}}>
-						  </div>
-						  <div class="modal-footer">
-							  <button type="button" id="add-user-form" class="btn btn-secondary" data-bs-dismiss="modal" (click)="addForm.resetForm()">Close</button>
-							  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
-						  </div>
-					  </form>
-				  </div>
-			  </div>
-			</div> -->
+
+
 	</div>
 </div>

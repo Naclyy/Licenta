@@ -36,28 +36,33 @@
                 <h5>Key Strength Description</h5>
                 <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
               </div>
-    
-              <div class="col-md-8">
-                <div class="mb-3">
-                  <label for="exampleInput1" class="form-label">Key Strength 1</label>
-                  <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
-                    <option value = "0">Select Key Strength</option>
-                    <option>{{strengths[1] | json}}</option>
-                  </select>
+                <div class="col-md-8" *ngIf="strengths">
+                      <div class="mb-3">
+                        <label for="exampleInput1" class="form-label">Key Strength 1</label>
+                        <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                          <option value = "0">Select Key Strength</option>
+                          <option *ngFor="let strength of strengths; let i = index">{{strength.keyStrengths}}</option>
+                        </select>
+                      </div>
+                    <div class="mb-3">
+                      <label for="exampleInput2" class="form-label">Key Strength 2</label>
+                      <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                        <option value = "0">Select Key Strength</option>
+                        <option *ngFor="let strength of strengths; let i = index">{{strength.keyStrengths}}</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInput3" class="form-label">Key Strength 3</label>
+                      <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                        <option value = "0">Select Key Strength</option>
+                        <option *ngFor="let strength of strengths; let i = index">{{strength.keyStrengths}}</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="keyComment" class="form-label">Add Comment</label>
+                      <input type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4"/>
+                    </div>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInput2" class="form-label">Key Strength 2</label>
-                  <select class="form-control" id="exampleInput2" style="max-width: 500px;"></select>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInput3" class="form-label">Key Strength 3</label>
-                  <select class="form-control" id="exampleInput3" style="max-width: 500px;"></select>
-                </div>
-                <div class="mb-3">
-                  <label for="keyComment" class="form-label">Add Comment</label>
-                  <input type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4"/>
-                </div>
-              </div>
             </div>
     
             <hr class="my-5" />

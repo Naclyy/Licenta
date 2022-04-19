@@ -1,7 +1,6 @@
-export interface Task{
+export interface whatTask{
     taskId: number,
-    userId: number,
-    objectives: string | null,
+    objective: string | null,
     dateAdded: string | null,
     deadline: string | null
 }

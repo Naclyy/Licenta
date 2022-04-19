@@ -32,7 +32,7 @@ public class HowInformation implements Serializable {
     private String objectives;
     private int estimatedTime;
 
-    @OneToMany(mappedBy = "predecessors")
+    @OneToMany(mappedBy = "predecessors", cascade = CascadeType.ALL)
     private List<PredecessorsInformation> predecessorsInformationList;
 
     @JsonIgnore

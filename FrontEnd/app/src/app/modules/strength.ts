@@ -1,4 +1,4 @@
 export interface Strength{
     id: number,
-    strength: string
+    keyStrengths: string
 }

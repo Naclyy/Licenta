@@ -22,11 +22,10 @@ public class HowController {
         return new ResponseEntity<>(howService.getHowObjectivesByUserId(id), HttpStatus.OK);
     }
 
-    @GetMapping("/test/{id}")
-    public ResponseEntity<List<Graph>> estimateTaskTime(@PathVariable("id") Long id){
-        return new ResponseEntity<>(howService.findAllByWhatId(id),HttpStatus.OK);
+    @GetMapping("/graph/{id}")
+    public ResponseEntity<List<Graph>> estimateTaskTime(@PathVariable("id") Long what_id){
+        return new ResponseEntity<>(howService.CalculateGraph(what_id),HttpStatus.OK);
     }
-
     @PostMapping("/add")
     public ResponseEntity<HowInformation> addNewTask(@RequestBody HowInformation howInformation){
         HowInformation task = howService.addNewTask(howInformation);

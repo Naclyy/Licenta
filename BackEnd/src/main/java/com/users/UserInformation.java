@@ -4,6 +4,7 @@ package com.users;
 import com.users.tasks.evaluate.EvaluateInformation;
 import com.users.tasks.whatObjectives.howObjectives.HowInformation;
 import com.users.tasks.whatObjectives.WhatInformation;
+import com.users.tasks.whatObjectives.userWhatJoin.JoinTableInformation;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,11 +44,11 @@ public class UserInformation implements Serializable, UserDetails {
     @OneToMany(mappedBy = "userHowTasks")
     private List<HowInformation> howInformationList;
 
-    @OneToMany(mappedBy = "userWhatTasks")
-    private List<WhatInformation> whatInformationList;
-
     @OneToOne(mappedBy = "userEvaluate", cascade = CascadeType.ALL)
     private EvaluateInformation evaluateInformation;
+
+    @OneToMany(mappedBy = "userJoinTable", cascade = CascadeType.ALL)
+    private List<JoinTableInformation> joinTableInformationList;
 
     public UserInformation(String firstName, String lastName, String position,
                            String email, String password, AppUserRole appUserRole) {

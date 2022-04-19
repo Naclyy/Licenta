@@ -180,7 +180,7 @@ body{margin-top:20px;}
     display: inline;
     justify-content: center;
     width: 100px;
-    height: 40px;
+    height: 45px;
     background-color: transparent;
     border: 1px solid #0d4fc9;
     border-radius: 8px;
@@ -227,13 +227,14 @@ body{margin-top:20px;}
     display: inline;
     justify-content: center;
     width: 200px;
-    height: 40px;
+    height: 45px;
     background-color: transparent;
     border: 1px solid #0d4fc9;
     border-radius: 8px;
     box-sizing: border-box;
     color: #0d4fc9;
     transition: .2s;
+	margin-top: 20px;
 }
 .what-page span {
     margin-top: 8.5px;
@@ -268,7 +269,7 @@ body{margin-top:20px;}
     display: inline;
     justify-content: center;
     width: 150px;
-    height: 40px;
+    height: 45px;
     background-color: transparent;
     border: 1px solid #0d4fc9;
     border-radius: 8px;
@@ -285,6 +286,32 @@ body{margin-top:20px;}
     line-height: 19,6px;
 }
 .evaluate-page:hover {
+    background-color: #0d4fc9;
+    color: white;
+    cursor: pointer;
+
+
+}
+
+
+/* Add Button */
+
+.addButton {
+	margin: 15px;
+    display:inline;
+    justify-content: center;
+    width: 150px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #0d4fc9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #0d4fc9;
+    transition: .2s;
+	float: right;
+	margin-top: 20px;
+}
+.addButton:hover {
     background-color: #0d4fc9;
     color: white;
     cursor: pointer;

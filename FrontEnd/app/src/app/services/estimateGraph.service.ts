@@ -13,6 +13,6 @@ export class EstimateGraphService{
     constructor(private http: HttpClient){}
 
     public getGraphEstimation(): Observable<EstimateGraph[]>{
-        return this.http.get<EstimateGraph[]>(`${this.apiServerUrl}/howTask/test/1`);
+        return this.http.get<EstimateGraph[]>(`${this.apiServerUrl}/howTask/graph/1`);
     }
 }

@@ -12,10 +12,9 @@ public class WhatConfig {
     @Bean
     CommandLineRunner commandLineRunner2(WhatRepository repository) {
         return args -> {
-            System.out.println("intra pe what");
-            WhatInformation saleForAndrei = new WhatInformation(1L, "Sales must go up by 10%", "20", "30");
-            WhatInformation saleForNicu = new WhatInformation(3L, "Sales must go up by 10%", "20", "30");
-            repository.saveAll(List.of(saleForAndrei, saleForNicu));
+            repository.saveAll(List.of(
+                    new WhatInformation("Sales must go up by 10%", "20", "30")
+            ));
         };
     }
 }

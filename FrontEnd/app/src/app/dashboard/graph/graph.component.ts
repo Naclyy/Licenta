@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EstimateGraph } from 'src/app/modules/estimateGraph';
 import { EstimateGraphService } from 'src/app/services/estimateGraph.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
@@ -14,7 +15,8 @@ export class GraphComponent implements OnInit {
   public earlyFinishData: number[] = [];
   public lateStartData: number[] = [];
   public lateFinishData: number[] = [];
-  constructor(private graphService: EstimateGraphService) { }
+  public estimated_days: number = 0;
+  constructor(private graphService: EstimateGraphService, private router:Router) { }
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -30,6 +32,8 @@ export class GraphComponent implements OnInit {
       this.graphElements = res;
       for(let i = 0; i < this.graphElements.length; i++)
       {
+        if(this.estimated_days < this.graphElements[i].lateFinish)
+          this.estimated_days = this.graphElements[i].lateFinish;
       this.barChartLabels.push(this.graphElements[i].name)
       this.earlyStartData.push(this.graphElements[i].earlyStart)
       this.earlyFinishData.push(this.graphElements[i].earlyFinish)
@@ -47,7 +51,10 @@ export class GraphComponent implements OnInit {
     };
     
   }
- 
+
+  back(): void{
+    this.router.navigate(["dashboard/home"]);
+  }
  
   ngOnInit() {
     this.getGraph();

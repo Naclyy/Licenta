@@ -6,7 +6,7 @@ import { SelectUserComponent } from './select-user/select-user.component';
 import { HowObjectiveComponent } from './how-objective/how-objective.component';
 import { WhatObjectiveComponent } from './what-objective/what-objective.component';
 import { EvaluateComponent } from './evaluate/evaluate.component';
-
+import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
   declarations: [
   
@@ -18,7 +18,8 @@ import { EvaluateComponent } from './evaluate/evaluate.component';
   imports: [
     CommonModule,
     FormsModule,
-    IndividualRecordsRoutingModule
+    IndividualRecordsRoutingModule,
+    MatSliderModule
   ],
 })
 export class IndividualRecordsModule { }

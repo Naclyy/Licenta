@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Task } from "../modules/task";
+import { howTask } from "../modules/howTask";
 @Injectable({
     providedIn: 'root'
 })
@@ -12,8 +12,8 @@ export class HowObjectiveService{
     private errorMessage: any;
     constructor(private http: HttpClient){}
 
-    public getTasks(userId: number): Observable<Task[]>{
-        return this.http.get<Task[]>(`${this.apiServerUrl}/howTask/findAll/${userId}`);
+    public getTasks(userId: number): Observable<howTask[]>{
+        return this.http.get<howTask[]>(`${this.apiServerUrl}/howTask/findAll/${userId}`);
     }
 
     public deleteTask(taskId: number): void{

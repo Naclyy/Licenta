@@ -31,8 +31,8 @@ public class HowService {
         }
         howRepository.deleteById(taskId);
     }
-    public List<Graph> findAllByWhatId(Long id){
-        List<HowInformation> nodesFromRepo = howRepository.findAllByWhatId(id);
+    public List<Graph> CalculateGraph(Long what_id){
+        List<HowInformation> nodesFromRepo = howRepository.findAllByWhatId(what_id);
         List<PertNodes> nodes = new LinkedList<>();
         nodes.add(new PertNodes(0, 0, 0, 0, 0));
         for(int i = 1; i <= nodesFromRepo.size(); i++){

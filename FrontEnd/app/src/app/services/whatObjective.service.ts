@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Task } from "../modules/task";
+import { whatTask } from "../modules/whatTask";
 @Injectable({
     providedIn: 'root'
 })
@@ -12,12 +12,14 @@ export class WhatObjectiveService{
     private errorMessage: any;
     constructor(private http: HttpClient){}
 
-    public getTasks(userId: number): Observable<Task[]>{
-        return this.http.get<Task[]>(`${this.apiServerUrl}/howTask/findAll/${userId}`);
+    public getTasks(userId: number): Observable<whatTask[]>{
+        return this.http.get<whatTask[]>(`${this.apiServerUrl}/whatTask/findAll/${userId}`);
     }
-
+    public addTask(task: whatTask, userId: number): Observable<whatTask>{
+        return this.http.post<whatTask>(`${this.apiServerUrl}/whatTask/add/${userId}`, task);
+    }
     public deleteTask(taskId: number): void{
-        this.http.delete<void>(`${this.apiServerUrl}/howTask/delete/${taskId}`).subscribe({
+        this.http.delete<void>(`${this.apiServerUrl}/whatTask/delete/${taskId}`).subscribe({
             next: data => {
                 this.status = 'Delete successful';
             },
