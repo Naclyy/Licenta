@@ -13,31 +13,48 @@ public class HowController {
     private final HowService howService;
 
     @Autowired
-    public HowController(HowService howService){
+    public HowController(HowService howService) {
         this.howService = howService;
     }
 
     @GetMapping("/findAll/{id}")
-    public ResponseEntity<List<HowInformation>> getHowObjectivesByUserId(@PathVariable("id") Long id){
+    public ResponseEntity<List<HowInformation>> getHowObjectivesByUserId(@PathVariable("id") Long id) {
         return new ResponseEntity<>(howService.getHowObjectivesByUserId(id), HttpStatus.OK);
     }
 
+    @GetMapping("/findAllWhatId/{id}")
+    public ResponseEntity<List<HowInformation>> getHowObjectivesByWhatId(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(howService.getHowObjectivesByWhatId(id), HttpStatus.OK);
+    }
+
     @GetMapping("/graph/{id}")
-    public ResponseEntity<List<Graph>> estimateTaskTime(@PathVariable("id") Long what_id){
-        return new ResponseEntity<>(howService.CalculateGraph(what_id),HttpStatus.OK);
+    public ResponseEntity<List<Graph>> estimateTaskTime(@PathVariable("id") Long what_id) {
+        return new ResponseEntity<>(howService.CalculateGraph(what_id), HttpStatus.OK);
     }
-    @PostMapping("/add")
-    public ResponseEntity<HowInformation> addNewTask(@RequestBody HowInformation howInformation){
-        HowInformation task = howService.addNewTask(howInformation);
-        return new ResponseEntity<>(task, HttpStatus.CREATED);
+
+    @PostMapping("/add/{user_id}/{what_id}")
+    public ResponseEntity<HowInformation> addNewTask(@RequestBody AddHowTask task, @PathVariable("user_id") Long user_id,
+                                                     @PathVariable("what_id") Long what_id) {
+        HowInformation howTask = howService.addNewTask(new HowInformation(what_id, user_id, task.getObjectives(), task.getEstimatedTime()));
+        return new ResponseEntity<>(howTask, HttpStatus.CREATED);
     }
+
+    @PostMapping("/addPredecessor/{how_id}")
+    public ResponseEntity<?> addNewTask(@RequestBody Long predecessor_id, @PathVariable("how_id") Long how_id) {
+        System.out.println(how_id);
+        System.out.println(predecessor_id);
+        howService.addPredecessor(predecessor_id, how_id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @DeleteMapping(path = "/deleteByUserId/{userId}")
-    public ResponseEntity<?> deleteUser(@PathVariable("userId") Long userId){
+    public ResponseEntity<?> deleteUser(@PathVariable("userId") Long userId) {
         howService.removeByUserId(userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @DeleteMapping(path = "/delete/{taskId}")
-    public ResponseEntity<?> deleteTaskByTaskId(@PathVariable("taskId") Long taskId){
+    public ResponseEntity<?> deleteTaskByTaskId(@PathVariable("taskId") Long taskId) {
         howService.deleteTask(taskId);
         return new ResponseEntity<>(HttpStatus.OK);
     }

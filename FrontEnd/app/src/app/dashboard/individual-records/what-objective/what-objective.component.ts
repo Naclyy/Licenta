@@ -20,7 +20,7 @@ export class WhatObjectiveComponent implements OnInit {
     this.getTasks(this.id)
   }
   public getTasks(userId: any): void{
-    this.whatObjectiveService.getTasks(userId).subscribe((response: whatTask[]) => {
+    this.whatObjectiveService.getTasksForUser(userId).subscribe((response: whatTask[]) => {
       console.log(response)
       this.tasks = response;
     }),(error: HttpErrorResponse) => {

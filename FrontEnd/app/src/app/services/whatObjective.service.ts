@@ -12,12 +12,16 @@ export class WhatObjectiveService{
     private errorMessage: any;
     constructor(private http: HttpClient){}
 
-    public getTasks(userId: number): Observable<whatTask[]>{
-        return this.http.get<whatTask[]>(`${this.apiServerUrl}/whatTask/findAll/${userId}`);
+    public getTasksForUser(userId: number): Observable<whatTask[]>{
+        return this.http.get<whatTask[]>(`${this.apiServerUrl}/whatTask/findAllForUser/${userId}`);
+    }
+    public getAllTasks():Observable<whatTask[]>{
+        return this.http.get<whatTask[]>(`${this.apiServerUrl}/whatTask/findAll`);
     }
     public addTask(task: whatTask, userId: number): Observable<whatTask>{
         return this.http.post<whatTask>(`${this.apiServerUrl}/whatTask/add/${userId}`, task);
     }
+    
     public deleteTask(taskId: number): void{
         this.http.delete<void>(`${this.apiServerUrl}/whatTask/delete/${taskId}`).subscribe({
             next: data => {

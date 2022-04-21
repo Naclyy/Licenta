@@ -1,5 +1,6 @@
 package com.users.tasks.whatObjectives;
 
+import com.users.UserInformation;
 import com.users.tasks.whatObjectives.howObjectives.HowInformation;
 import com.users.tasks.whatObjectives.howObjectives.predecessors.PredecessorsRepository;
 import com.users.tasks.whatObjectives.userWhatJoin.JoinTableInformation;
@@ -18,6 +19,9 @@ import java.util.List;
 public class WhatService {
     private final WhatRepository whatRepository;
     private final JoinTableRepository joinTableRepository;
+    public List<WhatInformation> getAll() {
+        return whatRepository.findAll();
+    }
     public WhatInformation addNewTask(WhatInformation whatInformation, Long user_id){
         WhatInformation whatTask = whatRepository.save(whatInformation);
         whatRepository.flush();

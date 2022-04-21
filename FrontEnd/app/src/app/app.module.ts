@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './dashboard/home/home.component';
 import { SummaryComponent } from './dashboard/summary/summary.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

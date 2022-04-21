@@ -3,6 +3,7 @@ import com.pert.PertNodes;
 import com.users.UserInformation;
 import com.users.UserInformationRepository;
 import com.users.tasks.whatObjectives.howObjectives.predecessors.PredecessorsInformation;
+import com.users.tasks.whatObjectives.howObjectives.predecessors.PredecessorsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,19 @@ import java.util.List;
 public class HowService {
     private final HowRepository howRepository;
     private final UserInformationRepository userInformationRepository;
+    private final PredecessorsRepository predecessorsRepository;
     public HowInformation addNewTask(HowInformation howInformation){
         howRepository.save(howInformation);
         return howInformation;
     }
+    public void addPredecessor(Long predecessor, Long howId){
+        predecessorsRepository.save(new PredecessorsInformation(howId, predecessor));
+    }
     public List<HowInformation> getHowObjectivesByUserId(Long id){
         return howRepository.findHowInformationByUserId(id);
+    }
+    public List<HowInformation> getHowObjectivesByWhatId(Long id){
+        return howRepository.findHowInformationByWhatId(id);
     }
     public void deleteTask(Long taskId){
         boolean exists = howRepository.existsById(taskId);

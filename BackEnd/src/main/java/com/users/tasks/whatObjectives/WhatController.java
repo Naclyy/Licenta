@@ -24,9 +24,13 @@ public class WhatController {
         WhatInformation whatTask = whatService.addNewTask(whatInformation, user_id);
         return new ResponseEntity<>(whatTask, HttpStatus.CREATED);
     }
-    @GetMapping("/findAll/{id}")
+    @GetMapping("/findAllForUser/{id}")
     public ResponseEntity<List<WhatInformation>> getWhatObjectivesByUserId(@PathVariable("id") Long id){
         return new ResponseEntity<>(whatService.getWhatObjectivesByUserId(id), HttpStatus.OK);
+    }
+    @GetMapping("/findAll")
+    public ResponseEntity<List<WhatInformation>> getAllWhatObjective(){
+        return new ResponseEntity<>(whatService.getAll(), HttpStatus.OK);
     }
     @DeleteMapping(path = "/delete/{taskId}")
     public ResponseEntity<?> deleteTaskByTaskId(@PathVariable("taskId") Long taskId){

@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface HowRepository extends JpaRepository<HowInformation, Long> {
     List<HowInformation> findHowInformationByUserId(Long id);
+    List<HowInformation> findHowInformationByWhatId(Long id);
     Optional<HowInformation> removeHowInformationsByUserId(Long id);
     List<HowInformation> findAllByWhatId(Long id);
+
 }

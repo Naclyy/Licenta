@@ -3,5 +3,5 @@ export interface howTask{
     userId: number,
     whatId: number,
     objectives: string,
-    estimated_time: number,
+    estimatedTime: number,
 }

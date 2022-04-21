@@ -20,7 +20,8 @@ public class HowConfig {
                     new HowInformation(1L,4L, "Sell more to rich people",8),
                     new HowInformation(1L,5L, "Sell more to rich people",9),
                     new HowInformation(1L,6L, "Sell more to rich people",6),
-                    new HowInformation(1L,7L, "Sell more to rich people",5)
+                    new HowInformation(1L,7L, "Sell more to rich people",5),
+                    new HowInformation(2L,1L, "Sell more to rich people",5)
                     ));
         };
     }

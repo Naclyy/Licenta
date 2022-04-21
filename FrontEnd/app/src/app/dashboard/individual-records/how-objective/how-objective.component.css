@@ -1,5 +1,7 @@
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+	z-index: 99999 !important;
+ }
 body{margin-top:20px;}
-
 
 /* USER LIST TABLE */
 .user-list tbody td > img {
