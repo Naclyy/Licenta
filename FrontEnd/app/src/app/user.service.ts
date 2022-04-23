@@ -24,7 +24,9 @@ export class UserService{
     public updateUsers(userId: number, user: User): Observable<User>{
         return this.http.put<User>(`${this.apiServerUrl}/user/update/${userId}`, user);
     }
-
+    public findUSerById(userId:number): Observable<User>{
+        return this.http.get<User>(`${this.apiServerUrl}/user/find/${userId}`);
+    }
     public deleteUsers(userId: number): void{
         this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`).subscribe({
             next: data => {
