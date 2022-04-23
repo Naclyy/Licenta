@@ -176,8 +176,7 @@ body{margin-top:20px;}
 
 
 /* The back-button */
-
-.back-button {
+.back-button2 {
     margin: 15px;
     display: inline;
     justify-content: center;
@@ -190,7 +189,7 @@ body{margin-top:20px;}
     color: #0d4fc9;
     transition: .2s;
 }
-.back-button span {
+.back-button2 span {
     margin-top: 8.5px;
     text-align: center;
     font-weight: 500px;
@@ -199,21 +198,21 @@ body{margin-top:20px;}
 	margin-right: 20px;
 }
 
-.back-button svg {
+.back-button2 svg {
     padding-left: 10px;
 	margin-right: 7px;
     stroke: #0d4fc9;
     transition: .2s;
 }
 
-.back-button:hover {
+.back-button2:hover {
     background-color: #0d4fc9;
     color: white;
     cursor: pointer;
 
 
 }
-.back-button:hover svg{
+.back-button2:hover svg{
     stroke: white;
 }
 

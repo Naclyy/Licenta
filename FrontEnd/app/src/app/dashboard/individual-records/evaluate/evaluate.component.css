@@ -90,7 +90,7 @@ body{margin-top:20px;}
 
 /* Evaluate Button */
 
-.what-page {
+.what-page2 {
     margin: 15px;
     display: inline;
     justify-content: center;
@@ -104,7 +104,7 @@ body{margin-top:20px;}
     transition: .2s;
 	
 }
-.what-page span {
+.what-page2 span {
     margin-top: 8.5px;
     text-align: center;
     font-weight: 500px;
