@@ -10,5 +10,5 @@ public interface HowRepository extends JpaRepository<HowInformation, Long> {
     List<HowInformation> findHowInformationByWhatId(Long id);
     Optional<HowInformation> removeHowInformationsByUserId(Long id);
     List<HowInformation> findAllByWhatId(Long id);
-
+    HowInformation findTopByOrderByTaskIdDesc();
 }

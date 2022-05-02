@@ -12,7 +12,7 @@ export class EstimateGraphService{
     private errorMessage: any;
     constructor(private http: HttpClient){}
 
-    public getGraphEstimation(): Observable<EstimateGraph[]>{
-        return this.http.get<EstimateGraph[]>(`${this.apiServerUrl}/howTask/graph/1`);
+    public getGraphEstimation(id: number): Observable<EstimateGraph[]>{
+        return this.http.get<EstimateGraph[]>(`${this.apiServerUrl}/howTask/graph/${id}`);
     }
 }

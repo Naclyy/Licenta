@@ -15,8 +15,8 @@ import java.util.Arrays;
 //@ComponentScan(basePackageClasses = UserInformationController.class)
 public class BackEndApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BackEndApplication.class, args);
-//        new SolvePert().solve();
+       SpringApplication.run(BackEndApplication.class, args);
+//       new SolvePert().solve();
     }
 
     @Bean

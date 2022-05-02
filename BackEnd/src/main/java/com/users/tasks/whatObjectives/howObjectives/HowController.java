@@ -39,11 +39,10 @@ public class HowController {
         return new ResponseEntity<>(howTask, HttpStatus.CREATED);
     }
 
-    @PostMapping("/addPredecessor/{how_id}")
-    public ResponseEntity<?> addNewTask(@RequestBody Long predecessor_id, @PathVariable("how_id") Long how_id) {
-        System.out.println(how_id);
+    @PostMapping("/addPredecessor")
+    public ResponseEntity<?> addNewTask(@RequestBody Long predecessor_id) throws InterruptedException {
         System.out.println(predecessor_id);
-        howService.addPredecessor(predecessor_id, how_id);
+        howService.addPredecessor(predecessor_id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class PertNodes {
     List<PertNodes> predecessors = new LinkedList<>();
+    int id;
     String name;
     int estimatedTime;
     int earlyStart;
@@ -46,7 +47,8 @@ public class PertNodes {
         this.lateFinish = lateFinish;
     }
 
-    public PertNodes(int estimatedTime, int earlyStart, int earlyFinish, int lateStart, int lateFinish) {
+    public PertNodes(int id, int estimatedTime, int earlyStart, int earlyFinish, int lateStart, int lateFinish) {
+        this.id = id;
         this.estimatedTime = estimatedTime;
         this.earlyStart = earlyStart;
         this.earlyFinish = earlyFinish;
@@ -54,8 +56,12 @@ public class PertNodes {
         this.lateFinish = lateFinish;
     }
 
+    public int getId() {
+        return id;
+    }
 
-    public PertNodes(int estimatedTime) {
+    public PertNodes(int id, int estimatedTime) {
+        this.id = id;
         this.estimatedTime = estimatedTime;
         this.earlyStart = 0;
         this.earlyFinish = -1;

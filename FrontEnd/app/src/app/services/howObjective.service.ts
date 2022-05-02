@@ -22,9 +22,9 @@ export class HowObjectiveService{
     public addTask(task: addHowTask, userId: number, whatId: number): Observable<howTask>{
         return this.http.post<howTask>(`${this.apiServerUrl}/howTask/add/${userId}/${whatId}`, task);
     }
-    public addPredecessor(howId: number, predecessorId: number): void{
-        console.log("intra??")
-        this.http.post<void>(`${this.apiServerUrl}/howTask/addPredecessor/${howId}`, predecessorId).subscribe({
+    public addPredecessor(predecessorId: number): void{
+        console.log("ce se intampla")
+        this.http.post<void>(`${this.apiServerUrl}/howTask/addPredecessor/`, predecessorId).subscribe({
             next: data => {
                 this.status = 'Delete successful';
             },

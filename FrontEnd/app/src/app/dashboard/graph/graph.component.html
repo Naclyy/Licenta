@@ -7,6 +7,18 @@
             Back
         </span>
     </button>
+    <div class="select-box">
+        
+        <div class="options-container" >
+            <div *ngFor="let user of tasks" (click)="selectTask(user.objective)" class ="option" >
+                <input type="radio" class="radio" name = "category"/>
+                <label>{{user.objective}}</label>
+            </div>  
+        </div>
+        <div (click)="openDropDown()" class="selected" >
+            Select What Task
+        </div>
+    </div>
     <div id="divChart">
         <p>Days until the project is finished: {{estimated_days}}</p>
         <canvas baseChart

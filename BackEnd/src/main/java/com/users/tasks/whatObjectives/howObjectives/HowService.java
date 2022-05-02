@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 @Service
@@ -23,8 +24,9 @@ public class HowService {
         howRepository.save(howInformation);
         return howInformation;
     }
-    public void addPredecessor(Long predecessor, Long howId){
-        predecessorsRepository.save(new PredecessorsInformation(howId, predecessor));
+    public void addPredecessor(Long predecessor) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
+        predecessorsRepository.save(new PredecessorsInformation(howRepository.findTopByOrderByTaskIdDesc().getTaskId(), predecessor));
     }
     public List<HowInformation> getHowObjectivesByUserId(Long id){
         return howRepository.findHowInformationByUserId(id);
@@ -38,23 +40,30 @@ public class HowService {
             throw new IllegalStateException("taskul cu id-ul" + taskId + " nu exista");
         }
         howRepository.deleteById(taskId);
+        predecessorsRepository.deleteById(predecessorsRepository.findPredecessorsInformationByPredecessorId(taskId).getId());
     }
+
+
     public List<Graph> CalculateGraph(Long what_id){
         List<HowInformation> nodesFromRepo = howRepository.findAllByWhatId(what_id);
         List<PertNodes> nodes = new LinkedList<>();
-        nodes.add(new PertNodes(0, 0, 0, 0, 0));
-        for(int i = 1; i <= nodesFromRepo.size(); i++){
-            nodes.add(new PertNodes(nodesFromRepo.get(i - 1).getEstimatedTime()));
+        nodes.add(new PertNodes(0, 0, 0, 0, 0, 0));
+        for (HowInformation howInformation : nodesFromRepo) {
+            nodes.add(new PertNodes(Math.toIntExact(howInformation.getTaskId()), howInformation.getEstimatedTime()));
         }
         for(int i = 1; i <= nodesFromRepo.size(); i++){
             UserInformation user = userInformationRepository.findUserInformationByUserId(nodesFromRepo.get(i - 1).getUserId());
             nodes.get(i).setName(user.getFirstName() + " " + user.getLastName());
+            System.out.println(nodes.get(i).getName());
             if(nodesFromRepo.get(i - 1).getPredecessorsInformationList().isEmpty()){
                 nodes.get(i).addPredecessors(nodes.get(0));
             }
             else {
                 for (PredecessorsInformation predecessor : nodesFromRepo.get(i - 1).getPredecessorsInformationList()) {
-                    nodes.get(i).addPredecessors(nodes.get(Math.toIntExact(predecessor.getPredecessorId())));
+                    for(PertNodes node : nodes) {
+                        if(node.getId() == Math.toIntExact(predecessor.getPredecessorId()))
+                            nodes.get(i).addPredecessors(node);
+                    }
                 }
             }
         }

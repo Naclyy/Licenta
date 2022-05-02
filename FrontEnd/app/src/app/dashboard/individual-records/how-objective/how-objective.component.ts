@@ -110,7 +110,7 @@ onDeSelectAll(items: any){
   public onAddHowTask(addForm: NgForm): void{
     this.howObjectiveService.addTask(addForm.value, this.id, this.taskId).subscribe(
       (response: howTask) => {
-        console.log(response);
+        console.log(response.taskId);
         this.tasks.push(response);
       },
       (error: HttpErrorResponse) => {
@@ -122,10 +122,9 @@ onDeSelectAll(items: any){
     document.getElementById('add-user-form')?.click();
   }
   public addPredecessor(): void{
-    let index = this.tasks.length - 1 
     for(let i = 0; i < this.selectedItems.length; i++){
-      console.log(this.selectedItems[i].taskId, this.tasks[index].taskId)
-      this.howObjectiveService.addPredecessor(this.tasks[index].taskId, this.selectedItems[i].taskId)
+      console.log(this.selectedItems[i].taskId)
+      this.howObjectiveService.addPredecessor(this.selectedItems[i].taskId)
     }
   }
   back(): void{
