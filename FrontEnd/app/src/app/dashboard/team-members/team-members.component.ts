@@ -4,6 +4,7 @@ import { UserService } from '../../user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-team-members',
@@ -13,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class TeamMembersComponent implements OnInit {
   public users: User[] = [];
   public editedUserId = -1; 
-  constructor(private userService: UserService, private router:Router) {
+  constructor(private userService: UserService, private router:Router, private loginService: LoginService) {
    }
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class TeamMembersComponent implements OnInit {
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-bs-toggle', 'modal');
-    button.setAttribute('data-bs-target', '#addUserModal');
+    button.setAttribute('data-bs-target', '#editUserModal');
     container?.appendChild(button);
     button.click();
   }
@@ -50,6 +51,32 @@ export class TeamMembersComponent implements OnInit {
     this.userService.updateUsers(userId,addForm.value).subscribe(
       (response: User) => {
         this.users[this.editedUserId] = response;
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.error.message)
+      }
+    );
+    document.getElementById('add-user-form')?.click();
+  }
+
+  public onAddModal(): void {
+
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    button.setAttribute('data-bs-target', '#addUserModal');
+    container?.appendChild(button);
+    button.click();
+  }
+
+
+  public onAddUser(addForm: NgForm): void{
+    this.loginService.addUsers(addForm.value).subscribe(
+      (response: User) => {
         console.log(response);
       },
       (error: HttpErrorResponse) => {

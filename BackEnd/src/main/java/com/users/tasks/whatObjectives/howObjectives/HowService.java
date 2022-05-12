@@ -40,7 +40,10 @@ public class HowService {
             throw new IllegalStateException("taskul cu id-ul" + taskId + " nu exista");
         }
         howRepository.deleteById(taskId);
-        predecessorsRepository.deleteById(predecessorsRepository.findPredecessorsInformationByPredecessorId(taskId).getId());
+        List<PredecessorsInformation> list = predecessorsRepository.findPredecessorsInformationByPredecessorId(taskId);
+        if(list != null)
+            for(PredecessorsInformation elem : list)
+            predecessorsRepository.deleteById(elem.getId());
     }
 
 

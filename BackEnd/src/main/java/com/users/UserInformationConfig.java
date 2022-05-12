@@ -20,7 +20,8 @@ public class UserInformationConfig {
             UserInformation arsene = new UserInformation("Robert", "Arsene", "Data Analyst","robert.arsene@gmail.com","passwordul",AppUserRole.USER);
             UserInformation nicu4x4 = new UserInformation("Nicolae", "Capatina", "Apps Developer","nicu.capatina@gmail.com","passwordul",AppUserRole.USER);
             UserInformation radu = new UserInformation("Radu", "Harabagiu", "Service Delivery Manager","radu.harabagiu@gmail","passwordul",AppUserRole.USER);
-            repository.saveAll(List.of(andrei, robert,nicu, nicu4x4,iri,aurelian,coci,arsene,radu));
+            UserInformation gramescu = new UserInformation("Rares", "Gramescu", "Software Developer","rares.gramescu@gmail","passwordul",AppUserRole.USER);
+            repository.saveAll(List.of(andrei, robert, nicu, nicu4x4, iri, aurelian, coci, arsene, radu, gramescu));
         };
     }
 }

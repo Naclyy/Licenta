@@ -14,13 +14,13 @@ public class HowConfig {
     CommandLineRunner commandLineRunner3(HowRepository repository){
         return args -> {
             repository.saveAll(List.of(
-                    new HowInformation(1L,1L, "Sell more to rich people",7),
-                    new HowInformation(1L,2L, "Sell more to rich people",9),
-                    new HowInformation(1L,3L, "Sell more to rich people",12),
-                    new HowInformation(1L,4L, "Sell more to rich people",8),
-                    new HowInformation(1L,5L, "Sell more to rich people",9),
-                    new HowInformation(1L,6L, "Sell more to rich people",6),
-                    new HowInformation(1L,7L, "Sell more to rich people",5),
+                    new HowInformation(1L,1L, "Zah",7),
+                    new HowInformation(1L,2L, "Vacheru",9),
+                    new HowInformation(1L,3L, "Alex",12),
+                    new HowInformation(1L,4L, "Capatina",8),
+                    new HowInformation(1L,5L, "iri",9),
+                    new HowInformation(1L,6L, "aurelian",6),
+                    new HowInformation(1L,7L, "coci",5),
                     new HowInformation(2L,1L, "Sell more to rich people",5)
                     ));
         };

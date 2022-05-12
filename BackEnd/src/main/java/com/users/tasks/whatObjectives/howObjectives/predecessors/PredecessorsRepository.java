@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface PredecessorsRepository extends JpaRepository<PredecessorsInformation, Long> {
     List<PredecessorsInformation> findAllByHowId(Long id);
-    PredecessorsInformation findPredecessorsInformationByPredecessorId(Long id);
+    List<PredecessorsInformation> findPredecessorsInformationByPredecessorId(Long id);
 }
