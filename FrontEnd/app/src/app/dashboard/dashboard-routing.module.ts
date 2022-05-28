@@ -6,6 +6,8 @@ import { IndividualRecordsComponent } from "./individual-records/individual-reco
 import { SummaryComponent } from "./summary/summary.component";
 import { TeamMembersComponent } from "./team-members/team-members.component";
 import { GraphComponent } from "./graph/graph.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { ControlObjectiveComponent } from "./control-objective/control-objective.component";
 const routes: Routes = [
     {
         path: '',
@@ -31,6 +33,14 @@ const routes: Routes = [
             {
                 path:'graph',
                 component: GraphComponent
+            },
+            {
+                path:'profile/:id',
+                component: UserProfileComponent
+            },
+            {
+                path:'what-objectives',
+                component: ControlObjectiveComponent
             },
             {
                 path:'individual-records',

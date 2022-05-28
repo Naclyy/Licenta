@@ -11,7 +11,9 @@ import { NgForm } from '@angular/forms';
 })
 export class WhatObjectiveComponent implements OnInit {
   public id : any
-  public tasks: whatTask[] = []
+  public user_tasks: whatTask[] = []
+  public what_tasks: whatTask[] = []
+  public selectedTask : boolean = true;
   constructor(private whatObjectiveService: WhatObjectiveService, private router: Router, private _Activatedroute: ActivatedRoute) { 
     
   }
@@ -22,10 +24,45 @@ export class WhatObjectiveComponent implements OnInit {
   public getTasks(userId: any): void{
     this.whatObjectiveService.getTasksForUser(userId).subscribe((response: whatTask[]) => {
       console.log(response)
-      this.tasks = response;
+      this.user_tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
     };
+    this.whatObjectiveService.getAllTasks().subscribe((response: whatTask[]) => {
+      console.log(response)
+      this.what_tasks = response;
+    }),(error: HttpErrorResponse) => {
+      alert(error.message);
+    };
+  }
+  testAddTask(): number{
+    const selected = <HTMLVideoElement>document.querySelector(".selected");
+    const choosen_task = selected.innerHTML;
+    for(let i = 0; i < this.user_tasks.length; i++)
+      if(this.user_tasks[i].objective == choosen_task){
+        alert("The user already has this task")
+        this.selectedTask = true;
+        return -1
+      }
+    for(let i = 0; i < this.what_tasks.length; i++)
+      if(this.what_tasks[i].objective == choosen_task)
+        return this.what_tasks[i].taskId;
+    return -1
+    
+  }
+  public selectTask(task: any):void {
+    const optionsContainer = <HTMLVideoElement>document.querySelector(".options-container")
+    const selected = <HTMLVideoElement>document.querySelector(".selected");
+    selected.innerHTML = task;
+    optionsContainer.classList.remove("active");
+    this.selectedTask = false;
+  }
+  openDropDown():void {
+    const optionsContainer = <HTMLVideoElement>document.querySelector(".options-container")
+    optionsContainer.classList.toggle("active");
+  }
+  checkSelected(): boolean{
+    return this.selectedTask
   }
   public onOpenModal(): void {
 
@@ -40,21 +77,30 @@ export class WhatObjectiveComponent implements OnInit {
     button.click();
 
   }
-  public onAddWhatTask(addForm: NgForm): void{
-    this.whatObjectiveService.addTask(addForm.value, this.id).subscribe(
-      (response: whatTask) => {
-        console.log(response);
-        this.tasks.push(response);
+  public onAddWhatTask(): void{
+    if(this.testAddTask() != -1){
+      this.whatObjectiveService.addTaskToUser(this.testAddTask(), this.id).subscribe(
+        (response: whatTask) => {
+          console.log(response);
+          this.user_tasks.push(response);
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.error.message)
+        }
+      );
+      this.selectedTask = true;
+      document.getElementById('add-user-form')?.click();
+    }
+  }
+  public deleteTaskFromUser(taskId: any): void{
+    this.whatObjectiveService.deleteTaskFromUser(this.user_tasks[taskId].taskId, this.id).subscribe(
+      (response: any) => {
       },
       (error: HttpErrorResponse) => {
         alert(error.error.message)
       }
     );
-    document.getElementById('add-user-form')?.click();
-  }
-  public deleteTask(taskId: any): void{
-    this.whatObjectiveService.deleteTask(this.tasks[taskId].taskId);
-    this.tasks.splice(taskId, 1);
+    this.user_tasks.splice(taskId, 1);
   }
   back(): void{
     this.router.navigate(["dashboard/individual-records"]);

@@ -1,12 +1,12 @@
 package com.users.tasks.whatObjectives.howObjectives;
 
 public class Graph {
-    private String name;
-    private int estimatedTime;
-    private int earlyStart;
-    private int earlyFinish;
-    private int lateStart;
-    private int lateFinish;
+    private final String name;
+    private final int earlyStart;
+    private final int earlyFinish;
+    private final int lateStart;
+    private final int lateFinish;
+    private final int slack;
 
     public Graph(String name, int earlyStart, int earlyFinish, int lateStart, int lateFinish) {
         this.name = name;
@@ -14,14 +14,15 @@ public class Graph {
         this.earlyFinish = earlyFinish;
         this.lateStart = lateStart;
         this.lateFinish = lateFinish;
+        this.slack = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getEstimatedTime() {
-        return estimatedTime;
+    public int getSlack() {
+        return slack;
     }
 
     public int getEarlyStart() {
@@ -44,7 +45,6 @@ public class Graph {
     public String toString() {
         return "Graph{" +
                 "name='" + name + '\'' +
-                ", estimatedTime=" + estimatedTime +
                 ", earlyStart=" + earlyStart +
                 ", earlyFinish=" + earlyFinish +
                 ", lateStart=" + lateStart +

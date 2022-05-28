@@ -4,7 +4,10 @@ import com.users.UserInformation;
 import com.users.UserInformationRepository;
 import com.users.tasks.whatObjectives.howObjectives.predecessors.PredecessorsInformation;
 import com.users.tasks.whatObjectives.howObjectives.predecessors.PredecessorsRepository;
+import com.users.tasks.whatObjectives.userWhatJoin.JoinTableInformation;
+import com.users.tasks.whatObjectives.userWhatJoin.JoinTableRepository;
 import lombok.AllArgsConstructor;
+import org.hibernate.mapping.Join;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,7 +23,12 @@ public class HowService {
     private final HowRepository howRepository;
     private final UserInformationRepository userInformationRepository;
     private final PredecessorsRepository predecessorsRepository;
+    private final JoinTableRepository joinTableRepository;
     public HowInformation addNewTask(HowInformation howInformation){
+        JoinTableInformation hasWhatTask = new JoinTableInformation(howInformation.getUserId(), howInformation.getWhatId());
+        if(joinTableRepository.findJoinTableInformationByWhatIdAndUserId(howInformation.getUserId(), howInformation.getWhatId())==null){
+               joinTableRepository.save(hasWhatTask);
+        }
         howRepository.save(howInformation);
         return howInformation;
     }

@@ -13,6 +13,8 @@ export class KeyStrengthService{
     constructor(private http: HttpClient){}
 
     public getKeyStrengths(): Observable<Strength[]>{
-        return this.http.get<Strength[]>(`${this.apiServerUrl}/keyStrengths/getAll`);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*" };
+        return this.http.get<Strength[]>(`${this.apiServerUrl}/keyStrengths/getAll`, {headers});
     }
 }

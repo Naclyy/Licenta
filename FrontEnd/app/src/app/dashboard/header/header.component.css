@@ -1,17 +1,21 @@
+.bg-light{
+    background-color: rgb(255, 255, 255) !important;
+}
 .navbar-brand{
     padding-left: 2%;
 }
 .navbar-brand img{
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 70px;
+    background-color: transparent;
 }
 .profile-logout{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 2%;
-    width: 100px;
-    height: 40px;
+    width: 120px;
+    height: 50px;
     background-color: transparent;
     border: 1px solid #0d4fc9;
     border-radius: 8px;

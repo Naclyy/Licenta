@@ -92,7 +92,7 @@ public class UserInformationService implements UserDetailsService {
                 .orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
     }
 
-    public String signUpUser(UserInformation userInformation){
+    public UserInformation signUpUser(UserInformation userInformation){
         boolean userExists = userInformationRepository.findByEmail(userInformation.getEmail())
                 .isPresent();
         if(userExists){
@@ -108,7 +108,7 @@ public class UserInformationService implements UserDetailsService {
 
         //TODO: SEND Confirmation token
 
-        return "it works";
+        return userInformation;
     }
 
 

@@ -5,7 +5,7 @@ import { environment } from "src/environments/environment";
 import { User } from "../modules/user";
 import { Login } from "../modules/login";
 import { HttpHeaders } from '@angular/common/http'
-
+import { map } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
@@ -17,7 +17,10 @@ export class LoginService{
     public addUsers(user: User): Observable<User>{
       return this.http.post<User>(`${this.apiServerUrl}/authentication/register`, user);
     }
-    public testUsers(login: Login): Observable<Login>{
-      return this.http.post<Login>(`${this.apiServerUrl}/authentication/auth`, login);
+    public testUsers(login: Login){
+      return this.http.post<any>(`${this.apiServerUrl}/login`, login, {observe: 'response'}).pipe(map((resp) => {
+        localStorage.setItem('token',(resp.headers.get('expires') || "").toString());
+        console.log(localStorage.getItem('token'))
+    }));
     }
 }

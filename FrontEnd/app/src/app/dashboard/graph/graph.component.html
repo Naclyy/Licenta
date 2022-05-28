@@ -19,8 +19,10 @@
             Select What Task
         </div>
     </div>
-    <div id="divChart">
-        <p>Days until the project is finished: {{estimated_days}}</p>
+    <div id="divChart" [hidden]="!edited">
+        <div id="estimatedDays" >
+            <h3>Days until the project is finished: {{estimated_days}}</h3>
+        </div>
         <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"

@@ -1,5 +1,6 @@
 package com.users.tasks.whatObjectives.howObjectives;
 
+import com.users.tasks.whatObjectives.userWhatJoin.JoinTableInformation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,7 @@ public class HowController {
     @PostMapping("/add/{user_id}/{what_id}")
     public ResponseEntity<HowInformation> addNewTask(@RequestBody AddHowTask task, @PathVariable("user_id") Long user_id,
                                                      @PathVariable("what_id") Long what_id) {
+
         HowInformation howTask = howService.addNewTask(new HowInformation(what_id, user_id, task.getObjectives(), task.getEstimatedTime()));
         return new ResponseEntity<>(howTask, HttpStatus.CREATED);
     }

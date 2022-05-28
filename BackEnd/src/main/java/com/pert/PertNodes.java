@@ -12,8 +12,9 @@ public class PertNodes {
     int earlyFinish;
     int lateStart;
     int lateFinish;
-    boolean isLast = false;
     int slack = 0;
+
+    boolean isLast = false;
 
     public int getEarlyStart() {
         return earlyStart;
@@ -117,6 +118,7 @@ public class PertNodes {
                 ", lateStart=" + lateStart +
                 ", lateFinish=" + lateFinish +
                 ", slack=" + slack +
+                ", estimatedTime=" + estimatedTime +
                 '}';
     }
 }

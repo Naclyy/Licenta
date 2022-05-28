@@ -22,9 +22,9 @@ public class RegistrationController {
     private UserInformationService userInformationService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegistrationRequest request){
-        System.out.println(registrationService.register(request));
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<UserInformation> register(@RequestBody RegistrationRequest request){
+        UserInformation user = registrationService.register(request);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @PostMapping("/auth")

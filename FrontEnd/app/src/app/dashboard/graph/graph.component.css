@@ -5,7 +5,11 @@
     margin-left: 20%;
     margin-top: 5%;
 }
-
+#estimatedDays{
+  text-align: center;
+  margin-left: 11.4%;
+  margin-bottom: 20px;
+}
 .select-box {
     text-align: center;
     display: flex;

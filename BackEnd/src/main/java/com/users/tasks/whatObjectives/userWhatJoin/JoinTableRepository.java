@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface JoinTableRepository extends JpaRepository<JoinTableInformation, Long> {
         List<JoinTableInformation> findJoinTableInformationByUserId(Long id);
+        JoinTableInformation findJoinTableInformationByWhatIdAndUserId(Long task_id, Long user_id);
 }

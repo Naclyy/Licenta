@@ -14,21 +14,34 @@ export class UserService{
     constructor(private http: HttpClient){}
 
     public getUsers(): Observable<User[]>{
-        return this.http.get<User[]>(`${this.apiServerUrl}/user/all`);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , 
+        "Access-Control-Allow-Origin": "*",
+       };
+        console.log(token)
+        return this.http.get<User[]>(`${this.apiServerUrl}/user/all`, {headers});
     }
 
     public addUsers(user: User): Observable<User>{
-        return this.http.post<User>(`${this.apiServerUrl}/user/add`, user);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*"};
+        return this.http.post<User>(`${this.apiServerUrl}/user/add`, user, {headers});
     }
 
     public updateUsers(userId: number, user: User): Observable<User>{
-        return this.http.put<User>(`${this.apiServerUrl}/user/update/${userId}`, user);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*"};
+        return this.http.put<User>(`${this.apiServerUrl}/user/update/${userId}`, user, {headers});
     }
     public findUSerById(userId:number): Observable<User>{
-        return this.http.get<User>(`${this.apiServerUrl}/user/find/${userId}`);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*" };
+        return this.http.get<User>(`${this.apiServerUrl}/user/find/${userId}`, {headers});
     }
     public deleteUsers(userId: number): void{
-        this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`).subscribe({
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*" };
+        this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`, {headers}).subscribe({
             next: data => {
                 this.status = 'Delete successful';
             },
@@ -37,8 +50,5 @@ export class UserService{
                 console.error('There was an error!', error);
             }
         });
-    }
-    public testUsers(user: User): Observable<User>{
-        return this.http.post<User>(`${this.apiServerUrl}/user/login`, user);
     }
 }

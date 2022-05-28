@@ -33,8 +33,7 @@ export class LoginComponent implements OnInit {
 
   public onTestUser(testForm: NgForm): void{
     this.loginService.testUsers(testForm.value).subscribe(
-      (response: Login) => {
-        console.log("merge");
+      (response: any) => {
         this.router.navigate(["dashboard"]).then();
       },
       (error: HttpErrorResponse) => {

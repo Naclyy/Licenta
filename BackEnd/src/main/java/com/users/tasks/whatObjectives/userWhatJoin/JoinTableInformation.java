@@ -40,4 +40,12 @@ public class JoinTableInformation {
         this.userId = userId;
         this.whatId = whatId;
     }
+
+    @Override
+    public String toString() {
+        return "JoinTableInformation{" +
+                "userId=" + userId +
+                ", whatId=" + whatId +
+                '}';
+    }
 }

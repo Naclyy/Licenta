@@ -29,10 +29,10 @@
 		<div class="main-box clearfix">
 			<div class="table-responsive">
 				<table class="table user-list">
-					<thead>
+					<thead class="thead-dark">
 						<tr style="text-align: center;">
 							<th><span>Task</span></th>
-							<th><span>Estimated Days</span></th>
+							<th><span>Estimated Time</span></th>
 							<th>&nbsp;</th>
 						</tr>
 					</thead>
@@ -42,7 +42,7 @@
 								<p class="user-link">{{task?.objectives}}</p>
 							</td>
 							<td>
-								<p class="deadline">{{task?.estimatedTime}}</p>
+								<p class="deadline">{{task?.estimatedTime + " Days"}}</p>
 							</td>
 							<td class = ""style="width: 20%;">
 								
@@ -81,7 +81,7 @@
 			<div class="modal-dialog" role="document">
 			  <div class="modal-content">
 				  <div class="modal-header">
-				  <h5 class="modal-title" id="addHowTaskModalLabel">Complete the Form to Add What Objective</h5>
+				  <h5 class="modal-title" id="addHowTaskModalLabel">Complete the Form to Add How Objective</h5>
 				  <button type="button" class="close" (click)="resetForm(addForm)" data-bs-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				  </button>

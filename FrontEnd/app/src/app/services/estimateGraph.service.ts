@@ -13,6 +13,8 @@ export class EstimateGraphService{
     constructor(private http: HttpClient){}
 
     public getGraphEstimation(id: number): Observable<EstimateGraph[]>{
-        return this.http.get<EstimateGraph[]>(`${this.apiServerUrl}/howTask/graph/${id}`);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*"};
+        return this.http.get<EstimateGraph[]>(`${this.apiServerUrl}/howTask/graph/${id}`, {headers});
     }
 }

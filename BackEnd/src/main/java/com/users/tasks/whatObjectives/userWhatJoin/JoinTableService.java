@@ -15,4 +15,5 @@ public class JoinTableService {
         joinTableRepository.save(joinTableInformation);
         return joinTableInformation;
     }
+
 }

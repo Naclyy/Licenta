@@ -10,6 +10,9 @@ import { TeamMembersComponent } from './team-members/team-members.component';
 import { IndividualRecordsComponent } from './individual-records/individual-records.component';
 import { GraphComponent } from './graph/graph.component';
 import { NgChartsModule } from 'ng2-charts';
+import { GanttChartAngularModule } from 'gantt-chart-angular';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ControlObjectiveComponent } from './control-objective/control-objective.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -18,13 +21,16 @@ import { NgChartsModule } from 'ng2-charts';
     HeaderComponent,
     TeamMembersComponent,
     IndividualRecordsComponent,
-    GraphComponent
+    GraphComponent,
+    UserProfileComponent,
+    ControlObjectiveComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     DashboardRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    GanttChartAngularModule
   ],
 })
 export class DashboardModule { }

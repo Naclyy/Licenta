@@ -18,7 +18,8 @@ public class JoinTableConfig {
                     new JoinTableInformation(4L, 1L),
                     new JoinTableInformation(5L, 1L),
                     new JoinTableInformation(6L, 1L),
-                    new JoinTableInformation(7L, 1L)
+                    new JoinTableInformation(7L, 1L),
+                    new JoinTableInformation(1L, 2L)
             ));
         };
     }

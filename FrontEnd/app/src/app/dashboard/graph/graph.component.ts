@@ -18,14 +18,26 @@ export class GraphComponent implements OnInit {
   public earlyFinishData: number[] = [];
   public lateStartData: number[] = [];
   public lateFinishData: number[] = [];
+  public estimatedTime: number[][] = [];
+  public shortestPath: number[][] = [];
+  public slackData: number[][] = [];
   public estimated_days: number = 0;
+  public edited: boolean = false;
   public selectedUser = false;
   constructor(private whatObjectiveService: WhatObjectiveService, 
     private graphService: EstimateGraphService, private router:Router) { }
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    indexAxis: 'y',
+    scales: {
+      yAxes: [{
+         ticks: {
+            stepSize: 1
+         }
+      }]
+   }
   };
   
   public barChartType: string = 'bar';
@@ -33,24 +45,36 @@ export class GraphComponent implements OnInit {
 
   public barChartData: any[] = [];
   public getGraph(id: number): void{
+   
     this.graphService.getGraphEstimation(id).subscribe((res) => {
+      this.edited= true;
       this.graphElements = res;
       for(let i = 0; i < this.graphElements.length; i++)
       {
         if(this.estimated_days < this.graphElements[i].lateFinish)
           this.estimated_days = this.graphElements[i].lateFinish;
-      this.barChartLabels.push(this.graphElements[i].name)
-      this.earlyStartData.push(this.graphElements[i].earlyStart)
-      this.earlyFinishData.push(this.graphElements[i].earlyFinish)
-      this.lateStartData.push(this.graphElements[i].lateStart)
-      this.lateFinishData.push(this.graphElements[i].lateFinish)
+        this.barChartLabels.push(this.graphElements[i].name)
+        this.earlyStartData.push(this.graphElements[i].earlyStart)
+        this.earlyFinishData.push(this.graphElements[i].earlyFinish)
+        this.lateStartData.push(this.graphElements[i].lateStart)
+        this.lateFinishData.push(this.graphElements[i].lateFinish)
+        this.slackData.push([this.graphElements[i].earlyFinish, this.graphElements[i].lateFinish])
+        if(this.graphElements[i].earlyFinish - this.graphElements[i].lateFinish == 0)
+        {
+          this.shortestPath.push([this.graphElements[i].earlyStart, this.graphElements[i].earlyFinish])
+          this.estimatedTime.push([0, 0])
+        }
+        else{
+          this.shortestPath.push([0, 0])
+          this.estimatedTime.push([this.graphElements[i].earlyStart, this.graphElements[i].earlyFinish])
+        }
       }
       this.barChartData=[ 
-        { data: this.earlyStartData, label: 'Early Start' },
-        { data: this.earlyFinishData, label: 'Early Finish' },
-        { data: this.lateStartData, label: 'Late Start' },
-        { data: this.lateFinishData, label: 'Late Finish', backgroundColor: "red"}
+        { data: this.estimatedTime, label: 'Task estimated time' },
+        { data: this.shortestPath, label: 'Shortest Path', backgroundColor: "yellow" },
+        { data: this.slackData, label: 'Slack', backgroundColor: "red"}
       ]
+
     }),(error: HttpErrorResponse) => {
       alert(error.message);
     };
@@ -85,6 +109,10 @@ export class GraphComponent implements OnInit {
     this.earlyFinishData= [];
     this.lateStartData= [];
     this.lateFinishData= [];
+    this.estimatedTime= [];
+    this.shortestPath= [];
+    this.shortestPath= [];
+    this.slackData= [];
     this.estimated_days= 0;
     const selected = <HTMLVideoElement>document.querySelector(".selected");
     const choosen_objective = selected.innerHTML;
@@ -103,4 +131,5 @@ export class GraphComponent implements OnInit {
       alert(error.message);
     };
   }
+
 }

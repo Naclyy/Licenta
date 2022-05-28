@@ -30,7 +30,7 @@
 		<div class="main-box clearfix">
 			<div class="table-responsive">
 				<table class="table user-list">
-					<thead>
+					<thead class="thead-dark">
 						<tr style="text-align: center;">
 							<th><span>Task</span></th>
 							<th><span >Date Added</span></th>
@@ -39,25 +39,19 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let task of tasks; let i = index">
+						<tr *ngFor="let user_task of user_tasks; let i = index">
 							<td>
-								<p class="user-link">{{task?.objective}}</p>
+								<p class="user-link">{{user_task?.objective}}</p>
 							</td>
 							<td>
-								<p class="date">{{task?.dateAdded}}</p>
+								<p class="date">{{user_task?.dateAdded}}</p>
 							</td>
 							<td>
-								<p class="deadline">{{task?.deadline}}</p>
+								<p class="deadline">{{user_task?.deadline}}</p>
 							</td>
 							<td class = ""style="width: 20%;">
 								
-								<a href="javascript:void(0)" class="table-link">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-									</span>
-								</a>
-								<a  href="javascript:void(0)" (click)="deleteTask(i)" class="table-link danger" >
+								<a  href="javascript:void(0)" (click)="deleteTaskFromUser(i)" class="table-link danger" >
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -84,70 +78,37 @@
 			<div class="modal-dialog" role="document">
 			  <div class="modal-content">
 				  <div class="modal-header">
-				  <h5 class="modal-title" id="addWhatTaskModalLabel">Complete the Form to Add What Objective</h5>
+				  <h5 class="modal-title" id="addWhatTaskModalLabel">Add What Objective Modal</h5>
 				  <button type="button" class="close" (click)="addForm.resetForm()" data-bs-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				  </button>
 				  </div>
 				  <div class="modal-body">
-					  <form #addForm="ngForm" (ngSubmit)="onAddWhatTask(addForm)">
-						  <div class="form-group">
-							  <label for="name">Task</label>
-							  <input type="text" ngModel name="objective" class="form-control" id="objective" placeholder="Enter Task" required>
-						  </div>
-						  <div class="form-group">
-							  <label for="name">Date Added</label>
-							  <input type="text" ngModel name="dateAdded" class="form-control" id="dateAdded" required>
-						  </div>
-						  <div class="form-group">
-							<label for="name">Deadline</label>
-							<input type="text" ngModel name="deadline" class="form-control" id="deadline" required>
-						  </div>
-						  <div class="modal-footer">
+					  <form #addForm="ngForm" (ngSubmit)="onAddWhatTask()">
+						<div class="select-box">
+							<div class="options-container" >
+								<div *ngFor="let task of what_tasks" (click)="selectTask(task.objective)" class ="option" >
+									<input type="radio" class="radio" name = "category"/>
+									<label>{{task.objective}}</label>
+								</div>  
+							</div>
+							<div (click)="openDropDown()" class="selected">
+								Select What Task
+							</div>
+						</div>
+
+						  <div class="modal-footer" style="padding-top:20%;">
 							  <button type="button" id="add-user-form" class="btn btn-secondary" data-bs-dismiss="modal" (click)="addForm.resetForm()">Close</button>
-							  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Add</button>
+							  <button [disabled]="checkSelected()" type="submit" class="btn btn-primary" >Add</button>
 						  </div>
 					  </form>
+					  
 				  </div>
 			  </div>
 			</div>
 		</div>
 
 
-
-		<!-- Modal  Edit Button-->
-		<div class="modal" id="addWhatTaskModal" tabindex="-1" aria-labelledby="addWhatTaskModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				  <div class="modal-header">
-				  <h5 class="modal-title" id="addWhatTaskModalLabel">Complete the Form to Add What Objective</h5>
-				  <button type="button" class="close" (click)="addForm.resetForm()" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				  </button>
-				  </div>
-				  <div class="modal-body">
-					  <form #addForm="ngForm" (ngSubmit)="onAddWhatTask(addForm)">
-						  <div class="form-group">
-							  <label for="name">Task</label>
-							  <input type="text" ngModel name="objective" class="form-control" id="objective" placeholder="Enter Task" required>
-						  </div>
-						  <div class="form-group">
-							  <label for="name">Date Added</label>
-							  <input type="text" ngModel name="dateAdded" class="form-control" id="dateAdded" required>
-						  </div>
-						  <div class="form-group">
-							<label for="name">Deadline</label>
-							<input type="text" ngModel name="deadline" class="form-control" id="deadline" required>
-						  </div>
-						  <div class="modal-footer">
-							  <button type="button" id="add-user-form" class="btn btn-secondary" data-bs-dismiss="modal" (click)="addForm.resetForm()">Close</button>
-							  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Add</button>
-						  </div>
-					  </form>
-				  </div>
-			  </div>
-			</div>
-		</div>
 
 
 

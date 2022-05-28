@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   logout():void{
+    localStorage.setItem('token', '');
     this.router.navigate([""])
   }
   

@@ -13,6 +13,8 @@ export class SkillsService{
     constructor(private http: HttpClient){}
 
     public getSkills(): Observable<Skills[]>{
-        return this.http.get<Skills[]>(`${this.apiServerUrl}/skills/getAll`);
+        const token = (localStorage.getItem('token')||"").toString();
+        const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*"};
+        return this.http.get<Skills[]>(`${this.apiServerUrl}/skills/getAll`, {headers});
     }
 }
