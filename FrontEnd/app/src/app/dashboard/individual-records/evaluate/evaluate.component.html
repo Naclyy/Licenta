@@ -1,0 +1,135 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" id="main-container">
+    <button class = "back-button" (click)="back()">
+      <svg width="24" height="14" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+        <span>
+            Back
+        </span>
+    </button>
+	<button (click)="whatObjective()" class = "what-page2">
+		<span>
+			Set What Objective
+		</span>
+	</button>
+	<button (click)="howObjective()" class = "how-page">
+		<span>
+			Set How Objective
+		</span>
+		<svg xmlns="http://www.w3.org/2000/svg"  width="28" height="19"  viewBox="0 0 20 25"><path fill="currentColor" d="M13.293 7.293a.999.999 0 0 0 0 1.414L15.586 11H8a1 1 0 0 0 0 2h7.586l-2.293 2.293a.999.999 0 1 0 1.414 1.414L19.414 12l-4.707-4.707a.999.999 0 0 0-1.414 0z"/></svg>
+
+	</button>
+
+    <div class="card"  id="MyDIv">
+      
+        <form #contentToConvert>
+          <!-- Card header -->
+          <div class="card-header py-4 px-5 bg-light border-0">
+            <h4 class="mb-0 fw-bold">Evaluate {{firstName}} {{lastName}}</h4>
+          </div>
+    
+          <!-- Card body -->
+          <div class="card-body px-5">
+            <!-- Key Strength section -->
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Key Strength Description</h5>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+              </div>
+                <div class="col-md-8" *ngIf="strengths">
+                      <div class="mb-3">
+                        <label for="exampleInput1" class="form-label">Key Strength 1</label>
+                        <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                          <option value = "0">Select Key Strength</option>
+                          <option *ngFor="let strength of strengths; let i = index">{{strength.keyStrengths}}</option>
+                        </select>
+                      </div>
+                    <div class="mb-3">
+                      <label for="exampleInput2" class="form-label">Key Strength 2</label>
+                      <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                        <option value = "0">Select Key Strength</option>
+                        <option *ngFor="let strength of strengths; let i = index">{{strength.keyStrengths}}</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInput3" class="form-label">Key Strength 3</label>
+                      <select  class="form-control" id="exampleInput1" style="max-width: 500px;">
+                        <option value = "0">Select Key Strength</option>
+                        <option *ngFor="let strength of strengths; let i = index">{{strength.keyStrengths}}</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="keyComment" class="form-label">Add Comment</label>
+                      <textarea type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4">
+                      </textarea>
+                    </div>
+                </div>
+            </div>
+    
+            <hr class="my-5" />
+    
+            <!-- Key Strength section -->
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Skill Development Opportunity</h5>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+              </div>
+    
+              <div class="col-md-8">
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label">Skill Development Opportunity</label>
+                  <select class="form-control" id="exampleInput1" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
+                </div>
+              
+                <div class="mb-3">
+                  <label for="keyComment" class="form-label">Add Comment</label>
+                  <textarea type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4">
+                  </textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label">Next Skill Development Priority 1</label>
+                  <select class="form-control" id="exampleInput1" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput2" class="form-label">Next Skill Development Priority 2</label>
+                  <select class="form-control" id="exampleInput2" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput3" class="form-label">Next Skill Development Priority 3</label>
+                  <select class="form-control" id="exampleInput3" style="max-width: 500px;">
+                    <option value = "0">Select Skill</option>
+                    <option *ngFor="let skill of skills; let i = index" >{{skill.skills}}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="keyComment" class="form-label">Add Comment</label>
+                  <textarea type="text" style="height: 100px; max-width: 800px;"class="form-control" id="exampleInput4">
+                  </textarea>
+                </div>
+
+              </div>
+            </div>
+    
+
+
+          </div>
+        </form>
+        <!-- Card footer -->
+        <div class="card-footer text-end py-4 px-5 bg-light border-0">
+          <button type="submit" class="btn btn-primary btn-rounded" (click)="SavePDF(contentToConvert)">
+            Download
+          </button>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,87 @@
+<button class = "back-button" (click)="back_home()">
+    <svg width="24" height="14" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+    </svg>
+    <span>
+        Back
+    </span>
+</button>
+<div class="container" style="margin-top: 50px">
+    <div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="account-settings">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                    </div>
+                    <h5 class="user-name">{{user.firstName + " " + user.lastName}}</h5>
+                </div>
+                <div class="about">
+                    <h5>About</h5>
+                    <p>I'm Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input style="font-size:20px;" type="text" class="form-control" id="firstName" value="{{user.firstName}}" readonly>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input style="font-size:20px;" type="text" class="form-control" id="lastName" value="{{user.lastName}}" readonly>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input style="font-size:20px;" type="email" class="form-control" id="email" value="{{user.email}}" readonly>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input style="font-size:20px;" type="text" class="form-control" id="position" value="{{user.position}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="table user-list">
+					<thead class="thead-dark">
+						<tr style="text-align: center;font-size: 18px;">
+							<th scope="col"><span>Task Objective</span></th>
+							<th scope="col"><span>Days</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let task of tasks; let i = index">
+							<td>
+								{{task?.objectives}}
+							</td>
+							<td>
+								{{task?.estimatedTime}}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>

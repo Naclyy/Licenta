@@ -1,0 +1,407 @@
+body{margin-top:20px;}
+/* Select DropDown */
+.select-box {
+	padding-top: 3%;
+    text-align: center;
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    margin-left: 9%;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .select-box .options-container {
+    background: #0244af;
+    color: #f5f6fa;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+  
+    order: 1;
+  }
+  
+  .selected {
+    background: #0244af;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #f5f6fa;
+    position: relative;
+  
+    order: 0;
+  }
+  
+  .selected::after {
+    content: "";
+    background: url("../../../../assets/individual-records/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+  
+    transition: all 0.4s;
+  }
+  
+  .select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+  }
+  
+  .select-box .options-container.active + .selected::after {
+    transform: rotateX(180deg);
+    top: -6px;
+  }
+  
+  .select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: #0d141f;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .select-box .options-container::-webkit-scrollbar-thumb {
+    background: #0062ff;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .select-box .option,
+  .selected {
+    padding: 12px 24px;
+    cursor: pointer;
+  }
+  
+  .select-box .option:hover {
+    background: #0062ff;
+  }
+  
+  .select-box label {
+    cursor: pointer;
+  }
+  
+  .select-box .option .radio {
+    display: none;
+  }
+
+
+/* USER LIST TABLE */
+.user-list tbody td > img {
+    position: relative;
+	max-width: 50px;
+	float: left;
+	margin-right: 15px;
+}
+.user-list tbody td .user-link {
+	display: block;
+	padding-top: 10px;
+	max-width: 1200px;
+}
+
+.user-list tbody td .user-subhead {
+	font-size: 0.875em;
+	font-style: italic;
+}
+
+/* TABLES */
+.table {
+    border-collapse: separate;
+}
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+	background-color: #eee;
+}
+.table thead > tr > th {
+	border-bottom: 1px solid #C2C2C2;
+	padding-bottom: 0;
+}
+.table tbody > tr > td {
+	background: #f5f5f5;
+	border-top: 10px solid #fff;
+	vertical-align: middle;
+    text-align: center;
+	padding: 12px 8px;
+}
+.table tbody > tr > td:first-child,
+.table thead > tr > th:first-child {
+	padding-left: 20px;
+}
+.table thead > tr > th span {
+	border-bottom: 2px solid #C2C2C2;
+	display: inline-block;
+	padding-bottom: 5px;
+	font-weight: normal;
+}
+.table thead > tr > th > a span {
+	color: #344644;
+}
+.table thead > tr > th > a span:after {
+	content: "\f0dc";
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	margin-left: 5px;
+	font-size: 0.75em;
+}
+.table thead > tr > th > a.asc span:after {
+	content: "\f0dd";
+}
+.table thead > tr > th > a.desc span:after {
+	content: "\f0de";
+}
+.table thead > tr > th > a:hover span {
+	text-decoration: none;
+	color: #2bb6a3;
+	border-color: #2bb6a3;
+}
+.table.table-hover tbody > tr > td {
+	-webkit-transition: background-color 0.15s ease-in-out 0s;
+	transition: background-color 0.15s ease-in-out 0s;
+}
+.table tbody tr td .call-type {
+	display: block;
+	font-size: 0.75em;
+	text-align: center;
+}
+.table tbody tr td .first-line {
+	line-height: 1.5;
+	font-weight: 400;
+	font-size: 1.125em;
+}
+.table tbody tr td .first-line span {
+	font-size: 0.875em;
+	color: #969696;
+	font-weight: 300;
+}
+.table tbody tr td .second-line {
+	font-size: 0.875em;
+	line-height: 1.2;
+}
+.table a.table-link {
+	margin: 0 5px;
+	font-size: 1.125em;
+}
+.table a.table-link:hover {
+	text-decoration: none;
+	color: #2aa493;
+}
+.table a.table-link.danger {
+	color: #fe635f;
+}
+.table a.table-link.danger:hover {
+	color: #dd504c;
+}
+
+.table-products tbody > tr > td {
+	background: none;
+	border: none;
+	border-bottom: 1px solid #ebebeb;
+	-webkit-transition: background-color 0.15s ease-in-out 0s;
+	transition: background-color 0.15s ease-in-out 0s;
+	position: relative;
+}
+.table-products tbody > tr:hover > td {
+	text-decoration: none;
+	background-color: #f6f6f6;
+}
+.table-products .name {
+	display: block;
+	font-weight: 600;
+	padding-bottom: 7px;
+}
+.table-products .price {
+	display: block;
+	text-decoration: none;
+	width: 50%;
+	float: left;
+	font-size: 0.875em;
+}
+.table-products .price > i {
+	color: #8dc859;
+}
+.table-products .warranty {
+	display: block;
+	text-decoration: none;
+	width: 50%;
+	float: left;
+	font-size: 0.875em;
+}
+.table-products .warranty > i {
+	color: #f1c40f;
+}
+.table tbody > tr.table-line-fb > td {
+	background-color: #9daccb;
+	color: #262525;
+}
+.table tbody > tr.table-line-twitter > td {
+	background-color: #9fccff;
+	color: #262525;
+}
+.table tbody > tr.table-line-plus > td {
+	background-color: #eea59c;
+	color: #262525;
+}
+.table-stats .status-social-icon {
+	font-size: 1.9em;
+	vertical-align: bottom;
+}
+.table-stats .table-line-fb .status-social-icon {
+	color: #556484;
+}
+.table-stats .table-line-twitter .status-social-icon {
+	color: #5885b8;
+}
+.table-stats .table-line-plus .status-social-icon {
+	color: #a75d54;
+}
+
+
+/* The back-button */
+
+.back-button {
+    margin: 15px;
+    display: inline;
+    justify-content: center;
+    width: 100px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #0d4fc9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #0d4fc9;
+    transition: .2s;
+}
+.back-button span {
+    margin-top: 8.5px;
+    text-align: center;
+    font-weight: 500px;
+    font-size: 16px;
+    line-height: 19,6px;
+	margin-right: 20px;
+}
+
+.back-button svg {
+    padding-left: 10px;
+	margin-right: 7px;
+    stroke: #0d4fc9;
+    transition: .2s;
+}
+
+.back-button:hover {
+    background-color: #0d4fc9;
+    color: white;
+    cursor: pointer;
+
+
+}
+.back-button:hover svg{
+    stroke: white;
+}
+
+@media screen and (min-width: 1000px){
+    .container{ 
+        max-width: 100% !important;
+    }
+}
+
+/* Set What Objective Button */
+.how-page {
+    margin: 15px;
+    display: inline;
+    justify-content: center;
+    width: 200px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #0d4fc9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #0d4fc9;
+    transition: .2s;
+	margin-top: 20px;
+}
+.how-page span {
+    margin-top: 8.5px;
+    text-align: center;
+    font-weight: 500px;
+    font-size: 16px;
+    line-height: 19,6px;
+    padding-left: 5px;
+}
+
+.how-page svg {
+    transition: .2s;
+}
+
+.how-page:hover {
+    background-color: #0d4fc9;
+    color: white;
+    cursor: pointer;
+
+
+}
+.how-page:hover svg{
+    stroke: white;
+}
+
+
+
+/* Evaluate Button */
+
+.evaluate-page {
+    margin: 15px;
+    display: inline;
+    justify-content: center;
+    width: 150px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #0d4fc9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #0d4fc9;
+    transition: .2s;
+}
+.evaluate-page span {
+    margin-top: 8.5px;
+    text-align: center;
+    font-weight: 500px;
+    font-size: 16px;
+    line-height: 19,6px;
+}
+.evaluate-page:hover {
+    background-color: #0d4fc9;
+    color: white;
+    cursor: pointer;
+
+
+}
+
+/* Add Button */
+
+.addButton {
+	margin: 15px;
+    display:inline;
+    justify-content: center;
+    width: 150px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #0d4fc9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #0d4fc9;
+    transition: .2s;
+	float: right;
+	margin-top: 20px;
+}
+.addButton:hover {
+    background-color: #0d4fc9;
+    color: white;
+    cursor: pointer;
+
+
+}
