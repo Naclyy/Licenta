@@ -2,8 +2,8 @@ package com.security.jwt;
 
 
 import com.google.common.base.Strings;
-import com.security.exceptions.TokenNotTrustedException;
-import com.security.token.InvalidatedTokenService;
+import com.exceptions.TokenNotTrustedException;
+import com.services.InvalidatedTokenService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;

@@ -1,11 +1,10 @@
 package com.registration;
 
-import com.users.AppUserRole;
-import com.users.UserInformation;
-import com.users.UserInformationService;
+import com.entities.enums.AppUserRole;
+import com.entities.UserInformation;
+import com.services.UserInformationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
 @AllArgsConstructor

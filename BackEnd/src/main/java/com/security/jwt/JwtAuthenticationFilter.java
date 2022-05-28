@@ -1,9 +1,8 @@
 package com.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.security.exceptions.UnauthorizedAuthenticationException;
-import com.security.requests.LoginRequest;
-import com.users.Login;
+import com.exceptions.UnauthorizedAuthenticationException;
+import com.entities.dto.Login;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
