@@ -45,6 +45,7 @@ public class WhatService {
         WhatInformation whatTask = whatRepository.save(whatInformation);
         return whatInformation;
     }
+
     public List<WhatInformation> getWhatObjectivesByUserId(Long user_id){
         List<JoinTableInformation> joinTable = joinTableRepository.findJoinTableInformationByUserId(user_id);
         List<WhatInformation> whatTasks = new LinkedList<>();

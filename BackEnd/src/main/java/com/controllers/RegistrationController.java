@@ -1,9 +1,9 @@
 package com.controllers;
 
-import com.registration.RegistrationRequest;
-import com.registration.RegistrationService;
-import com.entities.dto.Login;
 import com.entities.UserInformation;
+import com.entities.dto.Login;
+import com.entities.requests.RegistrationRequest;
+import com.services.RegistrationService;
 import com.services.UserInformationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,6 @@ public class RegistrationController {
 
     @PostMapping("/auth")
     public UserDetails loginUser(@RequestBody Login login){
-        System.out.println("ok");
         return userInformationService.findUserByEmailAndPassword(login.getEmail(), login.getPassword());
     }
 }

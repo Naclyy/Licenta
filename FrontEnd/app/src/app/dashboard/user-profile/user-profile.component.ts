@@ -26,13 +26,11 @@ export class UserProfileComponent implements OnInit {
   }
   public getUserInfo():void{
     this.userService.findUSerById(this.id).subscribe((response: User) => {
-      console.log(response)
       this.user = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
     };
     this.howObjectiveService.getTasks(this.id).subscribe((response: any[]) => {
-      console.log(response)
       this.tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);

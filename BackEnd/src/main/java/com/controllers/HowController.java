@@ -46,7 +46,6 @@ public class HowController {
 
     @PostMapping("/addPredecessor")
     public ResponseEntity<?> addNewTask(@RequestBody Long predecessor_id) throws InterruptedException {
-        System.out.println(predecessor_id);
         howService.addPredecessor(predecessor_id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -13,18 +13,12 @@ import java.util.List;
 @RequestMapping(path = "/whatTask")
 public class WhatController {
     private final WhatService whatService;
-
     @Autowired
     public WhatController(WhatService whatService){
         this.whatService = whatService;
     }
-
-
     @PostMapping("/addToUser/{id}")
     public ResponseEntity<WhatInformation>  addNewTask(@RequestBody Long task_id, @PathVariable("id") Long user_id){
-        System.out.println(user_id);
-        System.out.println(task_id);
-
         WhatInformation whatTask = whatService.addTaskToUser(task_id, user_id);
         return new ResponseEntity<>(whatTask, HttpStatus.CREATED);
     }
@@ -45,11 +39,8 @@ public class WhatController {
     @DeleteMapping(path = "/delete/{taskId}")
     public ResponseEntity<?> deleteTaskByTaskId(@PathVariable("taskId") Long taskId){
         whatService.deleteTask(taskId);
-        System.out.println("intra pe controller");
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
     @PostMapping(path = "/deleteFromUser/{user_id}")
     public ResponseEntity<?> deleteTaskFromUser(@RequestBody Long task_id, @PathVariable("user_id") Long user_id){
         whatService.deleteTaskFromUser(user_id, task_id);

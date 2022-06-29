@@ -23,13 +23,11 @@ export class WhatObjectiveComponent implements OnInit {
   }
   public getTasks(userId: any): void{
     this.whatObjectiveService.getTasksForUser(userId).subscribe((response: whatTask[]) => {
-      console.log(response)
       this.user_tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
     };
     this.whatObjectiveService.getAllTasks().subscribe((response: whatTask[]) => {
-      console.log(response)
       this.what_tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
@@ -81,7 +79,6 @@ export class WhatObjectiveComponent implements OnInit {
     if(this.testAddTask() != -1){
       this.whatObjectiveService.addTaskToUser(this.testAddTask(), this.id).subscribe(
         (response: whatTask) => {
-          console.log(response);
           this.user_tasks.push(response);
         },
         (error: HttpErrorResponse) => {

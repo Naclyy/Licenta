@@ -20,7 +20,6 @@ export class ControlObjectiveComponent implements OnInit {
   }
   public getTasks(): void{
     this.whatObjectiveService.getAllTasks().subscribe((response: whatTask[]) => {
-      console.log(response)
       this.what_tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
@@ -43,9 +42,7 @@ export class ControlObjectiveComponent implements OnInit {
     button.click();
   }
   public onAddWhatTask(form: NgForm): void{
-      console.log(form.value)
       this.whatObjectiveService.addTask(form.value).subscribe((response: whatTask) => {
-        console.log(response)
         this.what_tasks.push(response)
       }),(error: HttpErrorResponse) => {
         alert(error.message);

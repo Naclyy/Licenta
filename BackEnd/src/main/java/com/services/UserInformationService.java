@@ -62,7 +62,6 @@ public class UserInformationService implements UserDetailsService {
     }
 
     public UserDetails findUserByEmailAndPassword(String email, String password) {
-        System.out.println(email);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         UserDetails user = userInformationRepository.findByEmail(email).
             orElseThrow(() -> new IllegalStateException("the email doesn't exist in db"));

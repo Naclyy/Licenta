@@ -15,12 +15,13 @@ export class LoginService{
     constructor(private http: HttpClient){}
     
     public addUsers(user: User): Observable<User>{
-      return this.http.post<User>(`${this.apiServerUrl}/authentication/register`, user);
+      const token = (localStorage.getItem('token')||"").toString();
+      const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*" };
+      return this.http.post<User>(`${this.apiServerUrl}/authentication/register`, user, {headers});
     }
     public testUsers(login: Login){
       return this.http.post<any>(`${this.apiServerUrl}/login`, login, {observe: 'response'}).pipe(map((resp) => {
         localStorage.setItem('token',(resp.headers.get('expires') || "").toString());
-        console.log(localStorage.getItem('token'))
     }));
     }
 }

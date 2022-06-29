@@ -42,14 +42,12 @@ export class HowObjectiveComponent implements OnInit {
   }
   public getTasks(userId: any): void{
     this.howObjectiveService.getTasks(userId).subscribe((response: any[]) => {
-      console.log(response)
       this.tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
     };
 
     this.whatObjectiveService.getAllTasks().subscribe((response: whatTask[]) => {
-      console.log(response)
       this.whatTasks = response;
       this.getHowTasksByWhatId(this.whatTasks[0].taskId)
     }),(error: HttpErrorResponse) => {
@@ -76,7 +74,6 @@ export class HowObjectiveComponent implements OnInit {
   }
   public getHowTasksByWhatId(taskId: number){
     this.howObjectiveService.getAllTasksForWhatId(taskId).subscribe((response: howTask[]) => {
-      console.log(response)
       this.howTasks = response;
     },(error: HttpErrorResponse) => {
       alert(error.message);
@@ -84,7 +81,6 @@ export class HowObjectiveComponent implements OnInit {
     this.taskId = taskId;
   }
   public onSelectChange(event:any){
-    console.log(event.target.value)
     this.getHowTasksByWhatId(event.target.value)
     this.dropDownForm.reset();
     this.selectedItems = [];
@@ -110,7 +106,6 @@ onDeSelectAll(items: any){
   public onAddHowTask(addForm: NgForm): void{
     this.howObjectiveService.addTask(addForm.value, this.id, this.taskId).subscribe(
       (response: howTask) => {
-        console.log(response.taskId);
         this.tasks.push(response);
       },
       (error: HttpErrorResponse) => {

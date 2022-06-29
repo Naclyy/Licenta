@@ -18,7 +18,6 @@ export class UserService{
         const headers = { 'Authorization': token , 
         "Access-Control-Allow-Origin": "*",
        };
-        console.log(token)
         return this.http.get<User[]>(`${this.apiServerUrl}/user/all`, {headers});
     }
 

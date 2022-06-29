@@ -34,7 +34,6 @@ export class EvaluateComponent implements OnInit {
   }
   public getSkills(): void{
     this.skillsService.getSkills().subscribe((response: Skills[]) => {
-      console.log(response)
       this.skills = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);
@@ -43,7 +42,6 @@ export class EvaluateComponent implements OnInit {
 
   public getName():void{
     this.userService.findUSerById(this.id).subscribe((response: User) => {
-      console.log(response)
       this.firstName = response.firstName
       this.lastName = response.lastName
     }),(error: HttpErrorResponse) => {
@@ -54,7 +52,6 @@ export class EvaluateComponent implements OnInit {
   public getKeyStrengths(): void{
     this.keyStrengthsService.getKeyStrengths().subscribe((response: Strength[]) => {
       this.strengths = response;
-      console.log(this.strengths )
     }),(error: HttpErrorResponse) => {
       alert(error.message);
     };

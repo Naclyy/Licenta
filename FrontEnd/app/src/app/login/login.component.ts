@@ -19,17 +19,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onAddUser(addForm: NgForm): void{
-    this.loginService.addUsers(addForm.value).subscribe(
-      (response: User) => {
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.error.message)
-      }
-    );
-    document.getElementById('add-user-form')?.click();
-  }
 
   public onTestUser(testForm: NgForm): void{
     this.loginService.testUsers(testForm.value).subscribe(
@@ -42,17 +31,4 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  public onOpenModal(): void {
-
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-bs-toggle', 'modal');
-    button.setAttribute('data-bs-target', '#addUserModal');
-    container?.appendChild(button);
-    button.click();
-
-  }
 }

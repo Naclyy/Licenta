@@ -14,7 +14,9 @@ import { LoginService } from 'src/app/services/login.service';
 export class TeamMembersComponent implements OnInit {
   public allUsers: User[] = [];
   public selectedUsers: User[] = [];
+  public editedUser: User | undefined;
   public editedUserId = -1;
+  public selectedEditedUserId = -1;
   public pageNumbers: String[] = [];
   public numberOfPages: number = 1;
   public currentPage:String = "1";
@@ -50,8 +52,14 @@ export class TeamMembersComponent implements OnInit {
     this.selectedUsers.push(this.allUsers[Number(this.currentPage) * 5 - 1])
   }
 
-  public onOpenModal(userId : any): void {
+  public onOpenModal(userId : any, id : any): void {
     this.editedUserId = userId;
+    this.selectedEditedUserId = id;
+    for(let i = 0;i < this.allUsers.length; i++)
+      if(this.allUsers[i].userId == this.editedUserId){
+        this.editedUser = this.allUsers[i]
+        break
+      }
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -66,6 +74,7 @@ export class TeamMembersComponent implements OnInit {
     this.userService.updateUsers(userId,addForm.value).subscribe(
       (response: User) => {
         this.allUsers[this.editedUserId] = response;
+        this.selectedUsers[this.selectedEditedUserId] = response;
         console.log(response);
       },
       (error: HttpErrorResponse) => {
@@ -95,7 +104,6 @@ export class TeamMembersComponent implements OnInit {
   public onAddUser(addForm: NgForm): void{
     this.loginService.addUsers(addForm.value).subscribe(
       (response: User) => {
-        console.log(response)
         if(this.selectedUsers.length != 5){
           this.selectedUsers.push(response)
           this.pageNumbers.push((this.numberOfPages + 1).toString())
@@ -110,8 +118,6 @@ export class TeamMembersComponent implements OnInit {
   }
   public changePage(pageNumber: number):void{
     this.selectedUsers = [];
-    console.log(this.numberOfPages)
-    console.log(pageNumber)
     if(pageNumber == this.numberOfPages)
     {
       for(let i = 5*(pageNumber-1); i < this.allUsers.length; i++)

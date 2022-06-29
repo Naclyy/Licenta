@@ -14,8 +14,8 @@ public class WhatConfig {
     CommandLineRunner commandLineRunner2(WhatRepository repository) {
         return args -> {
             repository.saveAll(List.of(
-                    new WhatInformation("Sales must go up by 10%", "19/04/2022", "19/06/2022"),
-                    new WhatInformation("We must build a new frontend", "19/04/2022", "19/08/2022")
+                    new WhatInformation("Create a new app", "19/04/2022", "19/06/2022"),
+                    new WhatInformation("Add features to App_Name", "19/04/2022", "19/08/2022")
             ));
         };
     }

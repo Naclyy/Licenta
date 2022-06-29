@@ -1,8 +1,8 @@
-package com.registration;
+package com.services;
 
 import com.entities.enums.AppUserRole;
 import com.entities.UserInformation;
-import com.services.UserInformationService;
+import com.entities.requests.RegistrationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

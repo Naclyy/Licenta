@@ -1,20 +1,20 @@
 <br>
 <br>
 <div class="container" id="main-container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center"style="margin-top: 13%;">
       <div class="col-md-8">
         <div class="card-group mb-0">
           <div class="card p-4">
-            <div class="card-body">
+            <div class="card-body" >
               <form #testForm="ngForm" (ngSubmit)="onTestUser(testForm)">
                 <h1>Login</h1>
                 <p class="text-muted">Sign In to your account</p>
                   <div class="input-group mb-1">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <span class="input-group-addon" style="margin-right:4px"><i class="fa fa-user"></i></span>
                     <input type="text" ngModel name="email" class="form-control" placeholder="Email" required>
                   </div>
                   <div class="input-group mb-2">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <span class="input-group-addon" style="margin-right:6px"><i class="fa fa-lock"></i></span>
                     <input type="password" ngModel name="password" class="form-control" placeholder="Password" required>
                   </div>
                   <div class="row">
@@ -38,43 +38,5 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-              <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
-              <button type="button" class="close" (click)="addForm.resetForm()" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              </div>
-              <div class="modal-body">
-                  <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
-                      <div class="form-group">
-                          <label for="name">First Name</label>
-                          <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="name">Last Name</label>
-                          <input type="text" ngModel name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Email</label>
-                        <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Password</label>
-                        <input type="password" ngModel name="password" class="form-control" id="password" placeholder="Password" required>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" id="add-user-form" class="btn btn-secondary" data-bs-dismiss="modal" (click)="addForm.resetForm()">Close</button>
-                          <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-        </div>
     </div>
   </div>

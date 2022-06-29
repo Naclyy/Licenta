@@ -31,7 +31,6 @@ export class HowObjectiveService{
     public addPredecessor(predecessorId: number): void{
         const token = (localStorage.getItem('token')||"").toString();
         const headers = { 'Authorization': token , "Access-Control-Allow-Origin": "*" };
-        console.log("ce se intampla")
         this.http.post<void>(`${this.apiServerUrl}/howTask/addPredecessor/`, predecessorId, {headers}).subscribe({
             next: data => {
                 this.status = 'Delete successful';

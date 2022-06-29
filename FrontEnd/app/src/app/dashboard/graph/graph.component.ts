@@ -125,7 +125,6 @@ export class GraphComponent implements OnInit {
 
   public getWhatTasks(): void{
     this.whatObjectiveService.getAllTasks().subscribe((response: whatTask[]) => {
-      console.log(response)
       this.tasks = response;
     }),(error: HttpErrorResponse) => {
       alert(error.message);

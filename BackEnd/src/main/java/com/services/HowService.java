@@ -98,7 +98,6 @@ public class HowService {
                         node.getLateFinish()));
             }
         }
-        System.out.println(graphElement);
         return graphElement;
     }
     public void removeByUserId(Long id){
